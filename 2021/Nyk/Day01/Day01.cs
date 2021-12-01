@@ -6,9 +6,9 @@ using System.Collections.Generic;
 namespace Day01
 {
 
-    internal class Program
+    internal class Day01
     {
-        static int Part1()
+        static dynamic Part1(object[] args)
         {
             var fileReader = new FileReader();
             var increases = 0;
@@ -30,10 +30,10 @@ namespace Day01
             return increases;
         }
 
-        static int Part2()
+        static dynamic Part2(object[] args)
         {
             var fileReader = new FileReader();
-            var fileInput = fileReader.ReadByLines("input.txt").ToList().Select(int.Parse).ToList();
+            var fileInput = fileReader.ReadAllLines("input.txt").Select(int.Parse).ToList();
 
             var slidingWindows = new List<int>();
             var increases = 0;
@@ -62,8 +62,12 @@ namespace Day01
 
         static void Main(string[] args)
         {
-            Console.WriteLine($"Part 1: {Part1()}");
-            Console.WriteLine($"Part 2: {Part2()}");
+            var timer = new Timer();
+            var result1 = timer.TimeFunction(Part1);
+            var result2 = timer.TimeFunction(Part2);
+
+            Console.WriteLine($"Part 1: {result1.result}, Timings: Min: {result1.min}, Max: {result1.max}, Average: {result1.avg}");
+            Console.WriteLine($"Part 2: {result2.result}, Timings: Min: {result2.min}, Max: {result2.max}, Average: {result2.avg}");
         }
     }
 }
