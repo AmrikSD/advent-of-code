@@ -4,10 +4,9 @@ namespace Utils
 {
     public class FileReader
     {
-        public IEnumerable<string> ReadAllLines(string path)
+        public IEnumerable<string> ReadByLines(string path)
         {
-            string[] lines = System.IO.File.ReadAllLines(path);
-            foreach (var line in lines)
+            foreach (var line in System.IO.File.ReadLines(path))
             {
                 yield return line;
             }
