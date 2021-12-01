@@ -8,7 +8,7 @@ namespace Day01
 
     internal class Day01
     {
-        static dynamic Part1(object[] args)
+        static dynamic Part1()
         {
             var fileReader = new FileReader();
             var increases = 0;
@@ -30,7 +30,7 @@ namespace Day01
             return increases;
         }
 
-        static dynamic Part2(object[] args)
+        static dynamic Part2()
         {
             var fileReader = new FileReader();
             var fileInput = fileReader.ReadAllLines("input.txt").Select(int.Parse).ToList();
@@ -62,12 +62,11 @@ namespace Day01
 
         static void Main(string[] args)
         {
-            var timer = new Timer();
-            var result1 = timer.TimeFunction(Part1);
-            var result2 = timer.TimeFunction(Part2);
+            var result1 = Part1();
+            var result2 = Part2();
 
-            Console.WriteLine($"Part 1: {result1.result}, Timings: Min: {result1.min}ms, Max: {result1.max}ms, Average: {result1.avg}ms");
-            Console.WriteLine($"Part 2: {result2.result}, Timings: Min: {result2.min}ms, Max: {result2.max}ms, Average: {result2.avg}ms");
+            Console.WriteLine($"Part 1: {result1}");
+            Console.WriteLine($"Part 2: {result2}");
         }
     }
 }
