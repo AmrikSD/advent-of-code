@@ -2,8 +2,7 @@
 
 Shared repo for your Advent of Code puzzle solutions
 
-
-|Day|Amrik|Nyk|
-|-|-|-|
-|1|⭐|⭐|
-|2|||
+| Day | Amrik | Nyk  |
+| --- | ----- | ---- |
+| 1   | ⭐⭐  | ⭐⭐ |
+| 2   |       |      |
