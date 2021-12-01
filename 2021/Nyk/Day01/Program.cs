@@ -64,7 +64,6 @@ namespace Day01
         {
             Console.WriteLine($"Part 1: {Part1()}");
             Console.WriteLine($"Part 2: {Part2()}");
-            Console.ReadLine();
         }
     }
 }
