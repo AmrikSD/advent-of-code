@@ -8,7 +8,7 @@ namespace Day01
 
     internal class Day01
     {
-        static dynamic Part1()
+        static int Part1()
         {
             var fileReader = new FileReader();
             var increases = 0;
@@ -30,7 +30,7 @@ namespace Day01
             return increases;
         }
 
-        static dynamic Part2()
+        static int Part2()
         {
             var fileReader = new FileReader();
             var fileInput = fileReader.ReadAllLines("input.txt").Select(int.Parse).ToList();
