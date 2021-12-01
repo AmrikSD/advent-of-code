@@ -66,8 +66,8 @@ namespace Day01
             var result1 = timer.TimeFunction(Part1);
             var result2 = timer.TimeFunction(Part2);
 
-            Console.WriteLine($"Part 1: {result1.result}, Timings: Min: {result1.min}, Max: {result1.max}, Average: {result1.avg}");
-            Console.WriteLine($"Part 2: {result2.result}, Timings: Min: {result2.min}, Max: {result2.max}, Average: {result2.avg}");
+            Console.WriteLine($"Part 1: {result1.result}, Timings: Min: {result1.min}ms, Max: {result1.max}ms, Average: {result1.avg}ms");
+            Console.WriteLine($"Part 2: {result2.result}, Timings: Min: {result2.min}ms, Max: {result2.max}ms, Average: {result2.avg}ms");
         }
     }
 }

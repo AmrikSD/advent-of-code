@@ -35,7 +35,7 @@ namespace Utils
             var times = new List<double>();
             dynamic value = null;
 
-            for (var index = 0; index < 10; index++)
+            for (var _index = 0; _index < 10; _index++)
             {
                 _stopwatch.Reset();
                 _stopwatch.Start();
