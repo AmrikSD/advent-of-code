@@ -10,7 +10,7 @@ Unit Tests C#:
   stage: testing
   extends: .Unit_Tests
   script:
-    - cd C-Sharp
-    - dotnet test 2021/Nyk -p:CollectCoverage=true -p:CoverletOutputFormat=cobertura -p:CoverletOutput='../CodeCoverage/' -p:Threshold=95 --configuration Debug
+    - cd 2021/Nyk
+    - dotnet test AdventOfTest -p:CollectCoverage=true -p:CoverletOutputFormat=cobertura -p:CoverletOutput='../CodeCoverage/' -p:Threshold=95 --configuration Debug
   except:
     - main
