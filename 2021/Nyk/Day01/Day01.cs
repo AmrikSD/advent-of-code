@@ -5,16 +5,15 @@ using System.Collections.Generic;
 
 namespace Day01
 {
-
-    internal class Day01
+    public class Day01
     {
-        static int Part1()
+        public static int Part1(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
             var increases = 0;
             var previousLine = 0;
 
-            foreach (var line in fileReader.ReadByLines("input.txt"))
+            foreach (var line in fileReader.ReadByLines(inputFile))
             {
                 var lineNum = int.Parse(line);
                 if (previousLine != 0)
@@ -30,10 +29,10 @@ namespace Day01
             return increases;
         }
 
-        static int Part2()
+        public static int Part2(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
-            var fileInput = fileReader.ReadAllLines("input.txt").Select(int.Parse).ToList();
+            var fileInput = fileReader.ReadAllLines(inputFile).Select(int.Parse).ToList();
 
             var slidingWindows = new List<int>();
             var increases = 0;

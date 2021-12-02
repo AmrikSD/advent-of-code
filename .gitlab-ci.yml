@@ -1,0 +1,16 @@
+stages:
+  - testing
+
+.Unit_Tests:
+  artifacts:
+    reports:
+      cobertura: "C-Sharp/CodeCoverage/coverage.cobertura.xml"
+
+Unit Tests C#:
+  stage: testing
+  extends: .Unit_Tests
+  script:
+    - cd C-Sharp
+    - dotnet test 2021/Nyk -p:CollectCoverage=true -p:CoverletOutputFormat=cobertura -p:CoverletOutput='../CodeCoverage/' -p:Threshold=95 --configuration Debug
+  except:
+    - main
