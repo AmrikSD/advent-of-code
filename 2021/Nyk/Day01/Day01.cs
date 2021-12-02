@@ -2,6 +2,7 @@
 using Utils;
 using System.Linq;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Day01
 {
@@ -59,6 +60,7 @@ namespace Day01
             return increases;
         }
 
+        [ExcludeFromCodeCoverage]
         static void Main(string[] args)
         {
             var result1 = Part1();

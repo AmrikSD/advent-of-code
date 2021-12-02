@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Utils;
 
 namespace Day02
@@ -60,6 +61,7 @@ namespace Day02
             return vector.MultiplyAttributes();
         }
 
+        [ExcludeFromCodeCoverage]
         static void Main(string[] args)
         {
             var result1 = Part1();
