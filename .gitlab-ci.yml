@@ -4,7 +4,7 @@ stages:
 .Unit_Tests:
   artifacts:
     reports:
-      cobertura: "C-Sharp/CodeCoverage/coverage.cobertura.xml"
+      cobertura: "**/CodeCoverage/coverage.cobertura.xml"
 
 Unit Tests C#:
   image: mcr.microsoft.com/dotnet/sdk:5.0.402-focal-amd64
