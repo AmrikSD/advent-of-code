@@ -30,7 +30,7 @@ namespace Day03
             return lines;
         }
 
-        static int ConvertBinaryToInt(string binary)
+        static int ConvertBinaryStringToInt(string binary)
         {
             var result = 0;
             var binaryValues = new List<int>()
@@ -66,7 +66,7 @@ namespace Day03
         static int CalculateGammaRate(List<List<char>> values, out string gammaString)
         {
             gammaString = GenerateBinaryString(values);
-            return ConvertBinaryToInt(gammaString);
+            return ConvertBinaryStringToInt(gammaString);
         }
 
         static string InvertBinaryString(string binary)
@@ -77,7 +77,7 @@ namespace Day03
         static int CalculateEpsilonRate(string gammaString)
         {
             var epsilonString = InvertBinaryString(gammaString);
-            return ConvertBinaryToInt(epsilonString);
+            return ConvertBinaryStringToInt(epsilonString);
         }
 
         public static int Part1(string inputFile = "input.txt")
@@ -110,7 +110,7 @@ namespace Day03
                 return CalculateOxygenRate(newValues, newLines, binaryIndex + 1);
             }
 
-            return ConvertBinaryToInt(newLines.ElementAt(0));
+            return ConvertBinaryStringToInt(newLines.ElementAt(0));
         }
 
         static int CalculateCO2Rate(List<List<char>> values, List<string> lines, int binaryIndex)
@@ -130,7 +130,7 @@ namespace Day03
                 return CalculateCO2Rate(newValues, newLines, binaryIndex + 1);
             }
 
-            return ConvertBinaryToInt(newLines.ElementAt(0));
+            return ConvertBinaryStringToInt(newLines.ElementAt(0));
         }
 
         public static int Part2(string inputFile = "input.txt")
