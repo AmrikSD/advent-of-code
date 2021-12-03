@@ -1,0 +1,159 @@
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Utils;
+
+namespace Day03
+{
+    public class Day03
+    {
+        static List<List<char>> ConvertInput(List<string> input)
+        {
+            var inputColumnLength = input.ElementAt(0).Length;
+            var lines = new List<List<char>>();
+
+            for (var columnIndex = 0; columnIndex < inputColumnLength; columnIndex++)
+            {
+                var line = new List<char>();
+
+                for (var rowIndex = 0; rowIndex < input.Count; rowIndex++)
+                {
+                    var value = input.ElementAt(rowIndex).ElementAt(columnIndex);
+                    line.Add(value);
+                }
+
+                lines.Add(line);
+            }
+
+            return lines;
+        }
+
+        static int ConvertBinaryToInt(string binary)
+        {
+            var result = 0;
+            var binaryValues = new List<int>()
+            {
+                1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,
+            };
+
+            var reversedString = new string(binary.ToCharArray().Reverse().ToArray());
+
+            for (var strIndex = 0; strIndex < reversedString.Length; strIndex++)
+            {
+                if (reversedString.ElementAt(strIndex) == '1')
+                {
+                    result += binaryValues.ElementAt(strIndex);
+                }
+            }
+
+            return result;
+        }
+
+        static string GenerateBinaryString(List<List<char>> values)
+        {
+            var result = "";
+
+            foreach (var line in values)
+            {
+                result += line.Count(bit => bit == '1') > line.Count(bit => bit == '0') ? "1" : "0";
+            }
+
+            return result;
+        }
+
+        static int CalculateGammaRate(List<List<char>> values, out string gammaString)
+        {
+            gammaString = GenerateBinaryString(values);
+            return ConvertBinaryToInt(gammaString);
+        }
+
+        static string InvertBinaryString(string binary)
+        {
+            return new string(binary.Select(bit => bit == '1' ? '0' : '1').ToArray());
+        }
+
+        static int CalculateEpsilonRate(string gammaString)
+        {
+            var epsilonString = InvertBinaryString(gammaString);
+            return ConvertBinaryToInt(epsilonString);
+        }
+
+        public static int Part1(string inputFile = "input.txt")
+        {
+            var fileReader = new FileReader();
+            var lines = fileReader.ReadAllLines(inputFile).ToList();
+
+            var values = ConvertInput(lines);
+
+            var gammaValue = CalculateGammaRate(values, out var gammaString);
+            var epsilonValue = CalculateEpsilonRate(gammaString);
+
+            return gammaValue * epsilonValue;
+        }
+
+        static int CalculateOxygenRate(List<List<char>> values, List<string> lines, int binaryIndex)
+        {
+            var mostCommonBit =
+                values.ElementAt(binaryIndex).Count(bit => bit == '1') ==
+                values.ElementAt(binaryIndex).Count(bit => bit == '0') ?
+                '1' : values.ElementAt(binaryIndex).Count(bit => bit == '1') >
+                values.ElementAt(binaryIndex).Count(bit => bit == '0') ?
+                '1' : '0';
+
+            var newLines = lines.FindAll(binary => binary.ElementAt(binaryIndex) == mostCommonBit);
+
+            if (newLines.Count > 1)
+            {
+                var newValues = ConvertInput(newLines);
+                return CalculateOxygenRate(newValues, newLines, binaryIndex + 1);
+            }
+
+            return ConvertBinaryToInt(newLines.ElementAt(0));
+        }
+
+        static int CalculateCO2Rate(List<List<char>> values, List<string> lines, int binaryIndex)
+        {
+            var leastCommonBit =
+                values.ElementAt(binaryIndex).Count(bit => bit == '1') ==
+                values.ElementAt(binaryIndex).Count(bit => bit == '0') ?
+                '0' : values.ElementAt(binaryIndex).Count(bit => bit == '1') <
+                values.ElementAt(binaryIndex).Count(bit => bit == '0') ?
+                '1' : '0';
+
+            var newLines = lines.FindAll(binary => binary.ElementAt(binaryIndex) == leastCommonBit);
+
+            if (newLines.Count > 1)
+            {
+                var newValues = ConvertInput(newLines);
+                return CalculateCO2Rate(newValues, newLines, binaryIndex + 1);
+            }
+
+            return ConvertBinaryToInt(newLines.ElementAt(0));
+        }
+
+        public static int Part2(string inputFile = "input.txt")
+        {
+            var fileReader = new FileReader();
+            var lines = fileReader.ReadAllLines(inputFile).ToList();
+
+            var values = ConvertInput(lines);
+
+            var oxygenValue = CalculateOxygenRate(values, lines, 0);
+            var co2Value = CalculateCO2Rate(values, lines, 0);
+
+            return oxygenValue * co2Value;
+        }
+
+        [ExcludeFromCodeCoverage]
+        static void Main(string[] args)
+        {
+            var result1 = Part1();
+            var result2 = Part2();
+
+            Console.WriteLine($"Part 1: {result1}");
+            Console.WriteLine($"Part 2: {result2}");
+        }
+    }
+}
