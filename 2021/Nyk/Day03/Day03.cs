@@ -8,15 +8,15 @@ namespace Day03
 {
     public class Day03
     {
-        static List<List<char>> ConvertInput(List<string> input)
+        static IEnumerable<IEnumerable<char>> ConvertInput(IEnumerable<string> input)
         {
             return input.ElementAt(0)
                 .Select(
                     (_bit, index) => input
                     .Select(
                         byteString => byteString.ElementAt(index)
-                    ).ToList()
-                ).ToList();
+                    )
+                );
         }
 
         static int ConvertBinaryStringToInt(string binary)
@@ -27,14 +27,14 @@ namespace Day03
             return reversedString.Select((bit, index) => bit == '1' ? binaryValues.ElementAt(index) : 0).Sum();
         }
 
-        static string GenerateBinaryString(List<List<char>> values)
+        static string GenerateBinaryString(IEnumerable<IEnumerable<char>> values)
         {
             return string.Join("",
                 values.Select(line => line.Count(bit => bit == '1') > line.Count(bit => bit == '0') ? "1" : "0")
             );
         }
 
-        static int CalculateGammaRate(List<List<char>> values, out string gammaString)
+        static int CalculateGammaRate(IEnumerable<IEnumerable<char>> values, out string gammaString)
         {
             gammaString = GenerateBinaryString(values);
             return ConvertBinaryStringToInt(gammaString);
@@ -54,7 +54,7 @@ namespace Day03
         public static int Part1(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
-            var lines = fileReader.ReadAllLines(inputFile).ToList();
+            var lines = fileReader.ReadAllLines(inputFile);
 
             var values = ConvertInput(lines);
 
@@ -64,7 +64,7 @@ namespace Day03
             return gammaValue * epsilonValue;
         }
 
-        static int CalculateOxygenRate(List<List<char>> values, List<string> lines, int binaryIndex)
+        static int CalculateOxygenRate(IEnumerable<IEnumerable<char>> values, IEnumerable<string> lines, int binaryIndex)
         {
             var mostCommonBit =
                 values.ElementAt(binaryIndex).Count(bit => bit == '1') ==
@@ -73,9 +73,9 @@ namespace Day03
                 values.ElementAt(binaryIndex).Count(bit => bit == '0') ?
                 '1' : '0';
 
-            var newLines = lines.FindAll(binary => binary.ElementAt(binaryIndex) == mostCommonBit);
+            var newLines = lines.Where(binary => binary.ElementAt(binaryIndex) == mostCommonBit);
 
-            if (newLines.Count > 1)
+            if (newLines.Count() > 1)
             {
                 var newValues = ConvertInput(newLines);
                 return CalculateOxygenRate(newValues, newLines, binaryIndex + 1);
@@ -84,7 +84,7 @@ namespace Day03
             return ConvertBinaryStringToInt(newLines.ElementAt(0));
         }
 
-        static int CalculateCO2Rate(List<List<char>> values, List<string> lines, int binaryIndex)
+        static int CalculateCO2Rate(IEnumerable<IEnumerable<char>> values, IEnumerable<string> lines, int binaryIndex)
         {
             var leastCommonBit =
                 values.ElementAt(binaryIndex).Count(bit => bit == '1') ==
@@ -93,9 +93,9 @@ namespace Day03
                 values.ElementAt(binaryIndex).Count(bit => bit == '0') ?
                 '1' : '0';
 
-            var newLines = lines.FindAll(binary => binary.ElementAt(binaryIndex) == leastCommonBit);
+            var newLines = lines.Where(binary => binary.ElementAt(binaryIndex) == leastCommonBit);
 
-            if (newLines.Count > 1)
+            if (newLines.Count() > 1)
             {
                 var newValues = ConvertInput(newLines);
                 return CalculateCO2Rate(newValues, newLines, binaryIndex + 1);
