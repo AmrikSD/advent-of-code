@@ -3,8 +3,9 @@ stages:
 
 .Unit_Tests:
   artifacts:
+    when: always
     reports:
-      cobertura: "**/CodeCoverage/*.xml"
+      junit: "**/CodeCoverage/*.xml"
 
 Unit Tests C#:
   image: mcr.microsoft.com/dotnet/sdk:5.0.402-focal-amd64
