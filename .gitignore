@@ -11,6 +11,7 @@
 *.suo
 *.user
 *.sln.docstates
+coverage.json
 
 # Build results
 [Dd]ebug/
