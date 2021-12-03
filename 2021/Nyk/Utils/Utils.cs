@@ -11,10 +11,7 @@ namespace Utils
     {
         public IEnumerable<string> ReadByLines(string path)
         {
-            foreach (var line in File.ReadLines(ConvertPath(path)))
-            {
-                yield return line;
-            }
+            return File.ReadLines(ConvertPath(path));
         }
 
         public IEnumerable<string> ReadAllLines(string path)
