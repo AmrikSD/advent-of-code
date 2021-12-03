@@ -10,56 +10,28 @@ namespace Day03
     {
         static List<List<char>> ConvertInput(List<string> input)
         {
-            var inputColumnLength = input.ElementAt(0).Length;
-            var lines = new List<List<char>>();
-
-            for (var columnIndex = 0; columnIndex < inputColumnLength; columnIndex++)
-            {
-                var line = new List<char>();
-
-                for (var rowIndex = 0; rowIndex < input.Count; rowIndex++)
-                {
-                    var value = input.ElementAt(rowIndex).ElementAt(columnIndex);
-                    line.Add(value);
-                }
-
-                lines.Add(line);
-            }
-
-            return lines;
+            return input.ElementAt(0)
+                .Select(
+                    (_bit, index) => input
+                    .Select(
+                        byteString => byteString.ElementAt(index)
+                    ).ToList()
+                ).ToList();
         }
 
         static int ConvertBinaryStringToInt(string binary)
         {
-            var result = 0;
-            var binaryValues = new List<int>()
-            {
-                1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,
-            };
-
+            var binaryValues = binary.Select((bit, index) => index == 0 ? 1 : ((int)Math.Pow(2, index)));
             var reversedString = new string(binary.ToCharArray().Reverse().ToArray());
 
-            for (var strIndex = 0; strIndex < reversedString.Length; strIndex++)
-            {
-                if (reversedString.ElementAt(strIndex) == '1')
-                {
-                    result += binaryValues.ElementAt(strIndex);
-                }
-            }
-
-            return result;
+            return reversedString.Select((bit, index) => bit == '1' ? binaryValues.ElementAt(index) : 0).Sum();
         }
 
         static string GenerateBinaryString(List<List<char>> values)
         {
-            var result = "";
-
-            foreach (var line in values)
-            {
-                result += line.Count(bit => bit == '1') > line.Count(bit => bit == '0') ? "1" : "0";
-            }
-
-            return result;
+            return string.Join("",
+                values.Select(line => line.Count(bit => bit == '1') > line.Count(bit => bit == '0') ? "1" : "0")
+            );
         }
 
         static int CalculateGammaRate(List<List<char>> values, out string gammaString)
