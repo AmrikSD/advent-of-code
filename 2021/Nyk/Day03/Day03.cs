@@ -107,7 +107,7 @@ namespace Day03
         public static int Part2(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
-            var lines = fileReader.ReadAllLines(inputFile).ToList();
+            var lines = fileReader.ReadAllLines(inputFile);
 
             var values = ConvertInput(lines);
 
