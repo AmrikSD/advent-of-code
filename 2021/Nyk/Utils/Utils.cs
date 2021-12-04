@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 
@@ -10,10 +11,7 @@ namespace Utils
     {
         public IEnumerable<string> ReadByLines(string path)
         {
-            foreach (var line in File.ReadLines(ConvertPath(path)))
-            {
-                yield return line;
-            }
+            return File.ReadLines(ConvertPath(path));
         }
 
         public IEnumerable<string> ReadAllLines(string path)
@@ -46,6 +44,7 @@ namespace Utils
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public class Timer
     {
         private Stopwatch _stopwatch = new();
