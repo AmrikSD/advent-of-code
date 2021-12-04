@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Utils;
 
 namespace Day02
 {
-    internal class Day02
+    public class Day02
     {
-        static int Part1()
+        public static int Part1(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
             var vector = new Vector(0, 0);
 
-            foreach (var line in fileReader.ReadByLines("input.txt"))
+            foreach (var line in fileReader.ReadByLines(inputFile))
             {
                 var directionAmount = line.Split(' ');
                 var amount = int.Parse(directionAmount[1]);
@@ -32,12 +33,12 @@ namespace Day02
             return vector.MultiplyAttributes();
         }
 
-        static int Part2()
+        public static int Part2(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
             var vector = new Vector(0, 0, 0);
 
-            foreach (var line in fileReader.ReadByLines("input.txt"))
+            foreach (var line in fileReader.ReadByLines(inputFile))
             {
                 var directionAmount = line.Split(' ');
                 var amount = int.Parse(directionAmount[1]);
@@ -60,6 +61,7 @@ namespace Day02
             return vector.MultiplyAttributes();
         }
 
+        [ExcludeFromCodeCoverage]
         static void Main(string[] args)
         {
             var result1 = Part1();
