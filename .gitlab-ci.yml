@@ -1,0 +1,18 @@
+stages:
+  - testing
+
+.Unit_Tests:
+  artifacts:
+    when: always
+    reports:
+      junit: "**/CodeCoverage/*.xml"
+
+Unit Tests C#:
+  image: mcr.microsoft.com/dotnet/sdk:5.0.402-focal-amd64
+  stage: testing
+  extends: .Unit_Tests
+  script:
+    - cd 2021/Nyk
+    - dotnet test AdventOfTest -p:CollectCoverage=true -p:Threshold=95 --configuration Debug --test-adapter-path:"AdventOfTest/" --logger:"junit;LogFilePath=..\CodeCoverage\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"
+  except:
+    - main
