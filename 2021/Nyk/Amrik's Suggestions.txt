@@ -1,0 +1,14 @@
+            foreach (var board in boards)
+            {
+                foreach (var row in board.BoardNodes)
+                {
+                    foreach (var value in row)
+                    {
+                        Console.Write($"{value.Value}, ");
+                    }
+                    Console.WriteLine();
+                }
+            }
+
+            
+            Console.WriteLine(boards.ElementAt(0).BoardNodes.ElementAt(0).ElementAt(0).Value);
