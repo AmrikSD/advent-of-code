@@ -64,41 +64,57 @@ namespace Day03
             return gammaValue * epsilonValue;
         }
 
-        static int CalculateOxygenRate(IEnumerable<IEnumerable<char>> values, IEnumerable<string> lines, int binaryIndex)
+        static int CalculateOxygenRate(IEnumerable<string> lines, int binaryIndex)
         {
-            var mostCommonBit =
-                values.ElementAt(binaryIndex).Count(bit => bit == '1') ==
-                values.ElementAt(binaryIndex).Count(bit => bit == '0') ?
-                '1' : values.ElementAt(binaryIndex).Count(bit => bit == '1') >
-                values.ElementAt(binaryIndex).Count(bit => bit == '0') ?
-                '1' : '0';
+            var values = ConvertInput(lines);
+
+            var count1Bits = values.ElementAt(binaryIndex).Count(bit => bit == '1');
+            var count0Bits = values.ElementAt(binaryIndex).Count(bit => bit == '0');
+
+            char mostCommonBit;
+
+            if (count1Bits == count0Bits)
+            {
+                mostCommonBit = '1';
+            }
+            else
+            {
+                mostCommonBit = count1Bits > count0Bits ? '1' : '0';
+            }
 
             var newLines = lines.Where(binary => binary.ElementAt(binaryIndex) == mostCommonBit);
 
             if (newLines.Count() > 1)
             {
-                var newValues = ConvertInput(newLines);
-                return CalculateOxygenRate(newValues, newLines, binaryIndex + 1);
+                return CalculateOxygenRate(newLines, binaryIndex + 1);
             }
 
             return ConvertBinaryStringToInt(newLines.ElementAt(0));
         }
 
-        static int CalculateCO2Rate(IEnumerable<IEnumerable<char>> values, IEnumerable<string> lines, int binaryIndex)
+        static int CalculateCO2Rate(IEnumerable<string> lines, int binaryIndex)
         {
-            var leastCommonBit =
-                values.ElementAt(binaryIndex).Count(bit => bit == '1') ==
-                values.ElementAt(binaryIndex).Count(bit => bit == '0') ?
-                '0' : values.ElementAt(binaryIndex).Count(bit => bit == '1') <
-                values.ElementAt(binaryIndex).Count(bit => bit == '0') ?
-                '1' : '0';
+            var values = ConvertInput(lines);
+
+            var count1Bits = values.ElementAt(binaryIndex).Count(bit => bit == '1');
+            var count0Bits = values.ElementAt(binaryIndex).Count(bit => bit == '0');
+
+            char leastCommonBit;
+
+            if (count1Bits == count0Bits)
+            {
+                leastCommonBit = '0';
+            }
+            else
+            {
+                leastCommonBit = count1Bits < count0Bits ? '1' : '0';
+            }
 
             var newLines = lines.Where(binary => binary.ElementAt(binaryIndex) == leastCommonBit);
 
             if (newLines.Count() > 1)
             {
-                var newValues = ConvertInput(newLines);
-                return CalculateCO2Rate(newValues, newLines, binaryIndex + 1);
+                return CalculateCO2Rate(newLines, binaryIndex + 1);
             }
 
             return ConvertBinaryStringToInt(newLines.ElementAt(0));
@@ -109,10 +125,8 @@ namespace Day03
             var fileReader = new FileReader();
             var lines = fileReader.ReadAllLines(inputFile);
 
-            var values = ConvertInput(lines);
-
-            var oxygenValue = CalculateOxygenRate(values, lines, 0);
-            var co2Value = CalculateCO2Rate(values, lines, 0);
+            var oxygenValue = CalculateOxygenRate(lines, 0);
+            var co2Value = CalculateCO2Rate(lines, 0);
 
             return oxygenValue * co2Value;
         }
