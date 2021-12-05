@@ -13,6 +13,6 @@ Unit Tests C#:
   extends: .Unit_Tests
   script:
     - cd 2021/Nyk
-    - dotnet test AdventOfTest -p:CollectCoverage=true -p:Threshold=95 --configuration Debug --test-adapter-path:"AdventOfTest/" --logger:"junit;LogFilePath=..\CodeCoverage\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"
+    - dotnet test AdventOfTest -p:CollectCoverage=true -p:Threshold=80 --configuration Debug --test-adapter-path:"AdventOfTest/" --logger:"junit;LogFilePath=..\CodeCoverage\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"
   except:
     - main

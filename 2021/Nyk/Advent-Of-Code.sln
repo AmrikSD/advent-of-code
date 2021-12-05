@@ -14,7 +14,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day02", "Day02\Day02.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdventOfTest", "AdventOfTest\AdventOfTest.csproj", "{9559DE60-1E53-4B66-BFF2-F700C2B8AA8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day03", "Day03\Day03.csproj", "{7DBA34DF-FAD6-46E9-8FE2-B7650F3A76DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day03", "Day03\Day03.csproj", "{7DBA34DF-FAD6-46E9-8FE2-B7650F3A76DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day04", "Day04\Day04.csproj", "{5651EDB5-3253-4BBF-A322-00FEF275A960}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{450B729E-F030-4A14-9D6F-3B153902E3CF}"
+	ProjectSection(SolutionItems) = preProject
+		Amrik's Suggestions.txt = Amrik's Suggestions.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +49,10 @@ Global
 		{7DBA34DF-FAD6-46E9-8FE2-B7650F3A76DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DBA34DF-FAD6-46E9-8FE2-B7650F3A76DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DBA34DF-FAD6-46E9-8FE2-B7650F3A76DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5651EDB5-3253-4BBF-A322-00FEF275A960}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5651EDB5-3253-4BBF-A322-00FEF275A960}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5651EDB5-3253-4BBF-A322-00FEF275A960}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5651EDB5-3253-4BBF-A322-00FEF275A960}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

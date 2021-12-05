@@ -12,6 +12,7 @@
 *.user
 *.sln.docstates
 coverage.json
+Amrik's Suggestions.txt
 
 # Build results
 [Dd]ebug/
