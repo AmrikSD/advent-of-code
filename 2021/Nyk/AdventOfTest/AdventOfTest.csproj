@@ -27,10 +27,7 @@
     <ProjectReference Include="..\Day02\Day02.csproj" />
     <ProjectReference Include="..\Day03\Day03.csproj" />
     <ProjectReference Include="..\Day04\Day04.csproj" />
-<<<<<<< HEAD
     <ProjectReference Include="..\Day05\Day05.csproj" />
-=======
->>>>>>> main
     <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
 
