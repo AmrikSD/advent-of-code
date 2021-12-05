@@ -16,8 +16,6 @@ type Node struct {
 	called bool
 }
 
-type Draws []int
-
 func (b Board) processDraw(numDrew int) {
 
 	for i, v := range b.nodes {
@@ -81,7 +79,7 @@ func (b Board) checkColumns() (isBingo bool) {
 	return false
 }
 
-func ParseInput(filePath string) (boards []Board, draws Draws) {
+func ParseInput(filePath string) (boards []Board, draws []int) {
 
 	file, _ := os.Open(filePath)
 	scanner := bufio.NewScanner(file)

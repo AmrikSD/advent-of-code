@@ -137,7 +137,7 @@ func TestParseInputBoard(t *testing.T) {
 func TestParseInputDeck(t *testing.T) {
 	_, deck := ParseInput("sample.txt")
 
-	expected := Draws{7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24, 10, 16, 13, 6, 15, 25, 12, 22, 18, 20, 8, 19, 3, 26, 1}
+	expected := []int{7, 4, 9, 5, 11, 17, 23, 2, 0, 14, 21, 24, 10, 16, 13, 6, 15, 25, 12, 22, 18, 20, 8, 19, 3, 26, 1}
 
 	if !reflect.DeepEqual(expected, deck) {
 		t.Errorf("Expected %v\n actual %v", expected, deck)
@@ -316,5 +316,13 @@ func TestPartOne(t *testing.T) {
 	if expected != actual {
 		t.Errorf("Expected %v, actual %v", expected, actual)
 	}
+}
 
+func TestPartTwo(t *testing.T) {
+	expected := 1924
+	actual := partTwo("sample.txt")
+
+	if expected != actual {
+		t.Errorf("Expected %v, actual %v", expected, actual)
+	}
 }
