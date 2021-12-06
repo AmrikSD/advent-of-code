@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 
 
-namespace AdventOfTest.Day05Tests
+namespace AdventOfTest.Day06Tests
 {
     internal class Day06Tests
     {
@@ -13,15 +13,15 @@ namespace AdventOfTest.Day05Tests
         [Test]
         public void TestPart1()
         {
-            var result = Day05.Day05.Part1("Day05/TestInput.txt");
-            Assert.AreEqual(5, result);
+            var result = Day06.Day06.Part1("Day06/TestInput.txt");
+            Assert.AreEqual(5934, result);
         }
 
         [Test]
         public void TestPart2()
         {
-            var result = Day05.Day05.Part2("Day05/TestInput.txt");
-            Assert.AreEqual(12, result);
+            var result = Day06.Day06.Part2("Day06/TestInput.txt");
+            Assert.AreEqual(26984457539, result);
         }
     }
 }
