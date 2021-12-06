@@ -8,21 +8,21 @@ namespace Day06
 {
     public class Day06
     {
-        static IEnumerable<long> ParseInput(string line)
+        static IEnumerable<int> ParseInput(string line)
         {
-            return line.Split(",").Select(timer => long.Parse(timer));
+            return line.Split(",").Select(timer => int.Parse(timer));
         }
 
         public static int Part1(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
-            var lanternFish = new List<long>();
+            var lanternFish = new List<int>();
             lanternFish.AddRange(ParseInput(fileReader.ReadAllLines(inputFile).ElementAt(0)));
 
             for (var day = 0; day < 80; day++)
             {
                 Console.WriteLine($"Starting day: {day} at {DateTime.Now.TimeOfDay}");
-                var newFish = new List<long>();
+                var newFish = new List<int>();
 
                 for (var fishIndex = 0; fishIndex < lanternFish.Count; fishIndex++)
                 {
@@ -42,28 +42,8 @@ namespace Day06
         public static int Part2(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
-            var lanternFish = new List<long>();
-            lanternFish.AddRange(ParseInput(fileReader.ReadAllLines(inputFile).ElementAt(0)));
-
-            for (int day = 0; day < 256; day++)
-            {
-                Console.WriteLine($"Starting day: {day} at {DateTime.Now.TimeOfDay}");
-                Console.WriteLine($"Amount of Lantern Fish {lanternFish.Count}");
-                var newFish = new List<long>();
-
-                for (var fishIndex = 0; fishIndex < lanternFish.Count; fishIndex++)
-                {
-                    if (lanternFish.ElementAt(fishIndex) == 0)
-                    {
-                        newFish.Add(8);
-                        lanternFish[fishIndex] = 6;
-                    }
-                    else lanternFish[fishIndex] -= 1;
-                }
-                lanternFish.AddRange(newFish);
-            }
-
-            return lanternFish.Count();
+            var lanternFish = new List<List<int>>();
+            return 0;
         }
 
         [ExcludeFromCodeCoverage]
