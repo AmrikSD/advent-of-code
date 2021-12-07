@@ -3,7 +3,7 @@
 
 namespace AdventOfTest.Day05Tests
 {
-    internal class Day06Tests
+    internal class Day05Tests
     {
         [SetUp]
         public void Setup()
