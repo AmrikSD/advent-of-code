@@ -145,7 +145,7 @@ namespace Utils
                 }
             }
 
-            else if (direction.Y == -1 && direction.X == -1)
+            else if (direction.X == -1 && direction.Y == -1)
             {
                 for (var xIndex = startVector.X; xIndex >= endVector.X; xIndex--)
                 {
