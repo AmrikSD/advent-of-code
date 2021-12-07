@@ -4,8 +4,6 @@
     <TargetFramework>net5.0</TargetFramework>
 
     <IsPackable>false</IsPackable>
-
-    <Platforms>AnyCPU;x64</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,7 +28,6 @@
     <ProjectReference Include="..\Day03\Day03.csproj" />
     <ProjectReference Include="..\Day04\Day04.csproj" />
     <ProjectReference Include="..\Day05\Day05.csproj" />
-    <ProjectReference Include="..\Day06\Day06.csproj" />
     <ProjectReference Include="..\Utils\Utils.csproj" />
   </ItemGroup>
 
