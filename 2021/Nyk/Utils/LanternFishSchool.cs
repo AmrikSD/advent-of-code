@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Utils
 {
+	//Basically Amrik's solution, Lifted and Shifted. Thanks Amrik
     public class LanternFishSchool
     {
         Dictionary<long, long> fishSchool;
