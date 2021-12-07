@@ -18,7 +18,7 @@ namespace Utils
 
         string ConvertPath(string path)
         {
-            return "../../../../" + path;
+            return "../../../" + path;
         }
     }
 }
