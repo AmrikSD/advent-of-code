@@ -13,37 +13,30 @@ namespace Day06
             return line.Split(",").Select(timer => int.Parse(timer));
         }
 
-        public static int Part1(string inputFile = "input.txt")
+        public static long Part1(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
-            var lanternFish = new List<int>();
-            lanternFish.AddRange(ParseInput(fileReader.ReadAllLines(inputFile).ElementAt(0)));
+            var lanternFish = new LanternFishSchool(ParseInput(fileReader.ReadAllLines(inputFile).ElementAt(0)));
 
             for (var day = 0; day < 80; day++)
             {
-                Console.WriteLine($"Starting day: {day} at {DateTime.Now.TimeOfDay}");
-                var newFish = new List<int>();
-
-                for (var fishIndex = 0; fishIndex < lanternFish.Count; fishIndex++)
-                {
-                    if (lanternFish.ElementAt(fishIndex) == 0)
-                    {
-                        newFish.Add(8);
-                        lanternFish[fishIndex] = 6;
-                    }
-                    else lanternFish[fishIndex] -= 1;
-                }
-                lanternFish.AddRange(newFish);
+                lanternFish.IterateDay();
             }
 
-            return lanternFish.Count();
+            return lanternFish.CountFish();
         }
 
-        public static int Part2(string inputFile = "input.txt")
+        public static long Part2(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
-            var lanternFish = new List<List<int>>();
-            return 0;
+            var lanternFish = new LanternFishSchool(ParseInput(fileReader.ReadAllLines(inputFile).ElementAt(0)));
+
+            for (var day = 0; day < 256; day++)
+            {
+                lanternFish.IterateDay();
+            }
+
+            return lanternFish.CountFish();
         }
 
         [ExcludeFromCodeCoverage]
