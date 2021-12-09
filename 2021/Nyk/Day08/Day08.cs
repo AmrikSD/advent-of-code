@@ -36,34 +36,51 @@ namespace Day08
             return sumOf1748;
         }
 
-        static List<List<string>> GenerateNumberConfigs()
+        static List<string> DiscoverNumberConfigs(IEnumerable<string> inputs)
         {
-            return new List<List<string>>(){
-                new List<string>{
-                "bacefg",
-                 "cf",
-                 "acdeg",
-                "acdfg",
-                 "bdcf",
-                 "abdfg",
-                 "abdefg",
-                 "acf",
-                 "acedgfb",
-                 "abcdfg",
-                },
-                new List<string>{
-                "cagedb",
-                 "ab",
-                 "gcdfa",
-                "fbcad",
-                 "eafb",
-                 "cdfbe",
-                 "cdfgeb",
-                 "dab",
-                 "acedgfb",
-                 "cefabd",
-                }
-            };
+            /*
+              0000
+             6    1
+             6    1
+              2222
+             5    3
+             5    3
+              4444
+            */
+
+            var letterPositions = new List<string>() { "", "", "", "", "", "", "" };
+
+            var oneConfig = inputs.Where(input => input.Length == 2).ElementAt(0);
+            var fourConfig = inputs.Where(input => input.Length == 4).ElementAt(0);
+            var sevenConfig = inputs.Where(input => input.Length == 3).ElementAt(0);
+            var eightConfig = inputs.Where(input => input.Length == 7).ElementAt(0);
+
+            var sixConfigs = inputs.Where(input => input.Length == 6);
+            var fiveConfigs = inputs.Where(input => input.Length == 5);
+
+            letterPositions[0] = sevenConfig.Where(letter => !oneConfig.Contains(letter)).ElementAt(0).ToString(); //Find the odd character out from 7 and 1
+
+            var threeCharConfig = fiveConfigs.Where(config => sevenConfig.Count(letter => config.Contains(letter)) != 3).ElementAt(0); //find the configuration that represents 3
+            letterPositions[6] = fourConfig.Where(letter => !threeCharConfig.Contains(letter)).ElementAt(0).ToString(); //Find the odd character out from 3 and 4
+
+            var fiveCharConfig = fiveConfigs.Where(config => config.Contains(letterPositions[6])).ElementAt(0).ToString();
+            var twoCharConfig = fiveConfigs.Where(config => !config.Contains(letterPositions[6])).ElementAt(0).ToString();
+            var missingFromFive = twoCharConfig.Where(letter => !fiveCharConfig.Contains(letter));
+            letterPositions[1] = missingFromFive.Where(letter => oneConfig.Contains(letter)).ElementAt(0).ToString();
+            letterPositions[5] = missingFromFive.Where(letter => !oneConfig.Contains(letter)).ElementAt(0).ToString();
+            letterPositions[3] = oneConfig.Where(letter => letter.ToString() != letterPositions[2]).ElementAt(0).ToString();
+
+            var zeroCharConfig = sixConfigs
+                .Where(config => !config
+                .Contains(fiveCharConfig
+                .Where(letter => !config
+                .Contains(letter))
+                .ElementAt(0)
+                .ToString()))
+                .ElementAt(0)
+                .ToString();
+
+            return letterPositions;
         }
 
         static bool CheckStringIsNumber(string output, string numberConfig)
@@ -80,49 +97,34 @@ namespace Day08
         public static long Part2(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
-            var numberConfigs = GenerateNumberConfigs();
             var totalSum = 0;
 
             foreach (var line in fileReader.ReadByLines(inputFile))
             {
+
                 var lineValues = ParseInput(line);
                 var inputs = lineValues.ElementAt(0);
                 var outputs = lineValues.ElementAt(1);
-                var badLine = false;
 
-                foreach (var input in inputs)
+                var numberConfigs = DiscoverNumberConfigs(inputs);
+
+                var sum = 0;
+
+                foreach (var output in outputs)
                 {
-                    foreach (var numberConfig in numberConfigs[1])
+                    foreach (var numberConfig in numberConfigs)
                     {
-                        if (!CheckStringIsNumber(input, numberConfig))
+                        if (CheckStringIsNumber(output, numberConfig))
                         {
-                            badLine = true;
+                            sum *= 10;
+                            sum += numberConfigs[1].IndexOf(numberConfig);
                             break;
                         }
                     }
 
                 }
 
-                var stringRepresentation = "";
-
-                if (!badLine)
-                {
-                    foreach (var output in outputs)
-                    {
-                        foreach (var numberConfig in numberConfigs[1])
-                        {
-                            if (CheckStringIsNumber(output, numberConfig))
-                            {
-                                stringRepresentation += numberConfigs[1].IndexOf(numberConfig);
-                                break;
-                            }
-                        }
-
-                    }
-
-                    totalSum += int.Parse(stringRepresentation);
-                }
-
+                totalSum += sum;
             }
 
             return totalSum;
