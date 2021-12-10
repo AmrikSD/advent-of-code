@@ -17,5 +17,19 @@
         {
             return X * Y;
         }
+
+        public static bool operator ==(Vector vectorA, Vector vectorB)
+        {
+            if (vectorA.X == vectorB.X && vectorA.Y == vectorB.Y)
+                return true;
+            return false;
+        }
+
+        public static bool operator !=(Vector vectorA, Vector vectorB)
+        {
+            if (vectorA.X != vectorB.X || vectorA.Y != vectorB.Y)
+                return true;
+            return false;
+        }
     }
 }
