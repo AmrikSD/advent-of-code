@@ -25,7 +25,7 @@ namespace Utils
                 var newRow = new List<BoardNode>();
                 foreach (var num in row)
                 {
-                    newRow.Add(new BoardNode(int.Parse(num)));
+                    newRow.Add(new BoardNode(num.ToInt()));
                 }
                 BoardNodes.Add(newRow);
             }
