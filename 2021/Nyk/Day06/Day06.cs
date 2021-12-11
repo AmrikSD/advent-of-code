@@ -10,7 +10,7 @@ namespace Day06
     {
         static IEnumerable<int> ParseInput(string line)
         {
-            return line.Split(",").Select(timer => int.Parse(timer));
+            return line.Split(",").Select(timer => timer.ToInt());
         }
 
         public static long Part1(string inputFile = "input.txt")
