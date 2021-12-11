@@ -11,7 +11,7 @@ namespace Day07
     {
         static Dictionary<int, int> ParseInput(string line)
         {
-            var crabInput = line.Split(",").Select(crab => int.Parse(crab));
+            var crabInput = line.Split(",").Select(crab => crab.ToInt());
             var crabs = new Dictionary<int, int>();
 
             foreach (var crab in crabInput)

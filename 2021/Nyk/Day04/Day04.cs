@@ -10,7 +10,7 @@ namespace Day04
     {
         static (IEnumerable<Board>, IEnumerable<int>) ParseInput(IEnumerable<string> input)
         {
-            var calledNumbers = input.ElementAt(0).Split(',').ToList().Select(value => int.Parse(value));
+            var calledNumbers = input.ElementAt(0).Split(',').ToList().Select(value => value.ToInt());
             var boardStrings = input.Skip(2);
 
             var boards = new List<Board>();
