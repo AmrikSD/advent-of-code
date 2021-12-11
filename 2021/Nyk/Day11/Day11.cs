@@ -104,9 +104,35 @@ namespace Day11
             return octopuses.Select(row => row.Select(octopus => octopus.Flashes).Sum()).Sum();
         }
 
+        static bool CheckAllOctopusesFlashed(IEnumerable<IEnumerable<DumboOctopus>> octopuses)
+        {
+            return octopuses.Select(row => row.Where(octopus => octopus.FlashedThisStep == true).Count()).Sum() == 100;
+        }
+
         public static int Part2(string inputFile = "input.txt")
         {
-            return 0;
+            var fileReader = new FileReader();
+            var octopuses = ParseInput(fileReader.ReadAllLines(inputFile));
+
+            var foundStep = false;
+            var stepCount = 0;
+
+            while (!foundStep)
+            {
+                octopuses = IncreaseEnergyForStep(octopuses);
+                octopuses = PerformFlashes(octopuses);
+                if (CheckAllOctopusesFlashed(octopuses))
+                {
+                    foundStep = true;
+                }
+                else
+                {
+                    octopuses = ResetFlashedOctopuses(octopuses);
+                }
+                stepCount++;
+            }
+
+            return stepCount;
         }
 
         [ExcludeFromCodeCoverage]
