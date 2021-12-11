@@ -1,0 +1,24 @@
+﻿public static T ParseInput<T>(IEnumerable<string> lines)
+{
+    throw new NotImplementedException();
+}
+
+public static T Part1<T>(string inputFile = "input.txt")
+{
+    throw new NotImplementedException();
+}
+
+public static T Part2<T>(string inputFile = "input.txt")
+{
+    throw new NotImplementedException();
+}
+
+[ExcludeFromCodeCoverage]
+static void Main(string[] args)
+{
+    var result1 = Part1<int>();
+    var result2 = Part2<int>();
+
+    Console.WriteLine($"Part 1: {result1}");
+    Console.WriteLine($"Part 2: {result2}");
+}
