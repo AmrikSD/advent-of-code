@@ -14,7 +14,7 @@ namespace Day02
             foreach (var line in fileReader.ReadByLines(inputFile))
             {
                 var directionAmount = line.Split(' ');
-                var amount = int.Parse(directionAmount[1]);
+                var amount = directionAmount[1].ToInt();
 
                 switch (directionAmount[0])
                 {
@@ -41,7 +41,7 @@ namespace Day02
             foreach (var line in fileReader.ReadByLines(inputFile))
             {
                 var directionAmount = line.Split(' ');
-                var amount = int.Parse(directionAmount[1]);
+                var amount = directionAmount[1].ToInt();
 
                 switch (directionAmount[0])
                 {
