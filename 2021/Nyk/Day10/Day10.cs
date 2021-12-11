@@ -8,10 +8,6 @@ namespace Day10
 {
     public class Day10
     {
-        public static T ParseInput<T>(IEnumerable<string> lines)
-        {
-            throw new NotImplementedException();
-        }
 
         static bool CheckCorruptString(List<List<char>> startEndCollection, char character)
         {
@@ -127,7 +123,7 @@ namespace Day10
                 {
                     var scoreValues = startEndCollection
                         .ElementAt(1) //The ending list
-                        .Reverse<char>() //Reverse the last as the next needed was added last
+                        .Reverse<char>() //Reverse the list as the next needed was added last
                         .Select(character => bracketScore[character]);
 
                     long totalScoreForLine = 0;

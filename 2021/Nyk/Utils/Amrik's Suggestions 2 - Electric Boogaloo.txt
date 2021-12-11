@@ -1,23 +1,23 @@
-﻿public static T ParseInput<T>(IEnumerable<string> lines)
+﻿public static int ParseInput(IEnumerable<string> lines)
 {
-    throw new NotImplementedException();
+    return 0;
 }
 
-public static T Part1<T>(string inputFile = "input.txt")
+public static int Part1(string inputFile = "input.txt")
 {
-    throw new NotImplementedException();
+    return 0;
 }
 
-public static T Part2<T>(string inputFile = "input.txt")
+public static int Part2(string inputFile = "input.txt")
 {
-    throw new NotImplementedException();
+    return 0;
 }
 
 [ExcludeFromCodeCoverage]
 static void Main(string[] args)
 {
-    var result1 = Part1<int>();
-    var result2 = Part2<int>();
+    var result1 = Part1();
+    var result2 = Part2();
 
     Console.WriteLine($"Part 1: {result1}");
     Console.WriteLine($"Part 2: {result2}");
