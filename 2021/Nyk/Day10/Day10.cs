@@ -44,7 +44,7 @@ namespace Day10
             }
         }
 
-        public static T Part1<T>(string inputFile = "input.txt")
+        public static int Part1(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
             var bracketCount = new Dictionary<char, int>()
@@ -85,11 +85,10 @@ namespace Day10
                 }
             }
 
-            var sum = bracketCount.Select(bracket => bracket.Value * bracketScore[bracket.Key]).Sum();
-            return (T)Convert.ChangeType(sum, typeof(T));
+            return bracketCount.Select(bracket => bracket.Value * bracketScore[bracket.Key]).Sum();
         }
 
-        public static T Part2<T>(string inputFile = "input.txt")
+        public static long Part2(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
 
@@ -142,16 +141,14 @@ namespace Day10
                 }
             }
 
-            var result = incompleteScores.OrderByDescending(score => score).ElementAt(incompleteScores.Count / 2);
-
-            return (T)Convert.ChangeType(result, typeof(T));
+            return incompleteScores.OrderByDescending(score => score).ElementAt(incompleteScores.Count / 2);
         }
 
         [ExcludeFromCodeCoverage]
         static void Main(string[] args)
         {
-            var result1 = Part1<int>();
-            var result2 = Part2<long>();
+            var result1 = Part1();
+            var result2 = Part2();
 
             Console.WriteLine($"Part 1: {result1}");
             Console.WriteLine($"Part 2: {result2}");
