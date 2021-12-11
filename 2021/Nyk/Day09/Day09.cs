@@ -10,23 +10,7 @@ namespace Day09
     {
         static IEnumerable<IEnumerable<int>> ParseInput(IEnumerable<string> lines)
         {
-            return lines.Select(line => line.Select(numChar => int.Parse(numChar.ToString())));
-        }
-
-        static (int Value, Vector Position) GetAdjacentWithCoords(IEnumerable<IEnumerable<int>> heightMap, int rowIndex, int colIndex)
-        {
-            if (rowIndex < 0 || rowIndex >= heightMap.Count() ||
-                colIndex < 0 || colIndex >= heightMap.ElementAt(0).Count())
-                return (-1, new Vector(rowIndex, colIndex));
-            else return (heightMap.ElementAt(rowIndex).ElementAt(colIndex), new Vector(rowIndex, colIndex));
-        }
-
-        static int GetAdjacent(IEnumerable<IEnumerable<int>> heightMap, int rowIndex, int colIndex)
-        {
-            if (rowIndex < 0 || rowIndex >= heightMap.Count() ||
-                colIndex < 0 || colIndex >= heightMap.ElementAt(0).Count())
-                return -1;
-            else return heightMap.ElementAt(rowIndex).ElementAt(colIndex);
+            return lines.Select(line => line.Select(numChar => numChar.ToInt()));
         }
 
         static List<(int Value, Vector Position)> CalculateLowPoints(IEnumerable<IEnumerable<int>> heightMap)
@@ -38,10 +22,10 @@ namespace Day09
                 {
                     var lowestPointRow = new List<int>();
 
-                    lowestPointRow.Add(GetAdjacent(heightMap, row - 1, col)); //up
-                    lowestPointRow.Add(GetAdjacent(heightMap, row + 1, col)); //down
-                    lowestPointRow.Add(GetAdjacent(heightMap, row, col - 1)); //left
-                    lowestPointRow.Add(GetAdjacent(heightMap, row, col + 1)); //right
+                    lowestPointRow.Add(UsefulFuncs.GetAdjacent(heightMap, row - 1, col)); //up
+                    lowestPointRow.Add(UsefulFuncs.GetAdjacent(heightMap, row + 1, col)); //down
+                    lowestPointRow.Add(UsefulFuncs.GetAdjacent(heightMap, row, col - 1)); //left
+                    lowestPointRow.Add(UsefulFuncs.GetAdjacent(heightMap, row, col + 1)); //right
 
                     lowestPointRow.RemoveAll(ints => ints == -1);
                     var min = lowestPointRow.Min();
@@ -68,12 +52,12 @@ namespace Day09
             var pointsInBasin = new List<Vector>();
             var neighbours = new List<(int Value, Vector Position)>();
 
-            neighbours.Add(GetAdjacentWithCoords(heightMap, lowPoint.X - 1, lowPoint.Y)); //up
-            neighbours.Add(GetAdjacentWithCoords(heightMap, lowPoint.X + 1, lowPoint.Y)); //down
-            neighbours.Add(GetAdjacentWithCoords(heightMap, lowPoint.X, lowPoint.Y - 1)); //left
-            neighbours.Add(GetAdjacentWithCoords(heightMap, lowPoint.X, lowPoint.Y + 1)); //right
+            neighbours.Add(UsefulFuncs.GetAdjacentWithCoords(heightMap, lowPoint.X - 1, lowPoint.Y)); //up
+            neighbours.Add(UsefulFuncs.GetAdjacentWithCoords(heightMap, lowPoint.X + 1, lowPoint.Y)); //down
+            neighbours.Add(UsefulFuncs.GetAdjacentWithCoords(heightMap, lowPoint.X, lowPoint.Y - 1)); //left
+            neighbours.Add(UsefulFuncs.GetAdjacentWithCoords(heightMap, lowPoint.X, lowPoint.Y + 1)); //right
 
-            neighbours.RemoveAll(neighbour => neighbour.Item1 == -1);
+            neighbours.RemoveAll(neighbour => neighbour.Value == -1);
 
             if (visitedPositions == null)
             {
