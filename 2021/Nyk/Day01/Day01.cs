@@ -16,7 +16,7 @@ namespace Day01
 
             foreach (var line in fileReader.ReadByLines(inputFile))
             {
-                var lineNum = int.Parse(line);
+                var lineNum = line.ToInt();
                 if (previousLine != 0)
                 {
                     if (previousLine < lineNum)
@@ -33,7 +33,7 @@ namespace Day01
         public static int Part2(string inputFile = "input.txt")
         {
             var fileReader = new FileReader();
-            var fileInput = fileReader.ReadAllLines(inputFile).Select(int.Parse).ToList();
+            var fileInput = fileReader.ReadAllLines(inputFile).Select(number => number.ToInt()).ToList();
 
             var slidingWindows = new List<int>();
             var increases = 0;

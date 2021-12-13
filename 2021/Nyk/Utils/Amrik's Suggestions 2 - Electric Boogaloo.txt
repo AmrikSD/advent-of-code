@@ -1,0 +1,24 @@
+﻿public static int ParseInput(IEnumerable<string> lines)
+{
+    return 0;
+}
+
+public static int Part1(string inputFile = "input.txt")
+{
+    return 0;
+}
+
+public static int Part2(string inputFile = "input.txt")
+{
+    return 0;
+}
+
+[ExcludeFromCodeCoverage]
+static void Main(string[] args)
+{
+    var result1 = Part1();
+    var result2 = Part2();
+
+    Console.WriteLine($"Part 1: {result1}");
+    Console.WriteLine($"Part 2: {result2}");
+}
