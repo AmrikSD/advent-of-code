@@ -6,71 +6,90 @@ import (
 	"os"
 )
 
-type Coord struct {
-	y int
-	x int
-}
-
 func main() {
 	input := "input.txt"
 
-	fmt.Println(input)
+	fmt.Println(PartOne(input))
+	fmt.Println(PartTwo(input))
 
 }
 
 func PartOne(input string) (flashes int) {
 
+	octopodes := ParseInput(input)
+	for i := 0; i < 100; i++ {
+		flashes += step(octopodes)
+	}
+
+	printGrid(octopodes)
 	return flashes
 
 }
 
-func ProgressGrid(input [][]Octopus) (flashes int, grid [][]Octopus) {
-	flashes = 0
+func PartTwo(input string) int {
 
-	// First, the energy level of each octopus increase by one
-	grid = incrementAll(input)
+	octopodes := ParseInput(input)
+
+	currStep := 0
+	flashes := 10000
+	for flashes != 100 {
+		flashes = step(octopodes)
+		currStep++
+	}
+
+	printGrid(octopodes)
+	return currStep
+
+}
+func step(input [][]int) int {
+	flashed := [10][10]bool{}
+
+	// First, the energy level of each octopus increases by 1.
+	for y := range input {
+		for x := range input[y] {
+			input[y][x]++
+		}
+	}
 
 	// Then, any octopus with an energy level greater than 9 flashes.
-	// This increases the energy level of all adjacent octopuses by 1,
-	// including octopuses that are diagonally adjacent.
-	// If this causes an octopus to have an energy level greater than 9, it also flashes.
-	// This process continues as long as new octopuses keep having their energy level increased beyond 9. (
-	// An octopus can only flash at most once per step.)
-	for y := range grid {
-		for x := range grid[y] {
-			flashes, grid = flash(y, x, flashes, grid)
-		}
-	}
-
-	return flashes, grid
-}
-
-func flash(y, x, flashes int, grid [][]Octopus) (int, [][]Octopus) {
-
-	if grid[y][x].flashed {
-		return flashes, grid
-	}
-
-	out := [][]Octopus{}
-	for i := range grid {
-		OctoRow := []Octopus{}
-		for j, o := range grid[y] {
-			if i == y && j == x {
-				OctoRow = append(OctoRow, Octopus{o.value, true})
-			} else {
-				OctoRow = append(OctoRow, Octopus{o.value, o.flashed})
+	flashHappened := true
+	for flashHappened {
+		flashHappened = false
+		for y := range input {
+			for x := range input[y] {
+				if flashed[y][x] {
+					continue
+				}
+				if input[y][x] > 9 {
+					flashHappened = true
+					flashed[y][x] = true
+					neighbours := findNeighbours(input, y, x)
+					for _, n := range neighbours {
+						input[n[0]][n[1]]++
+					}
+				}
 			}
 		}
-		out = append(out, OctoRow)
+
 	}
 
-	neighbours := findNeighbours(y, x, out)
+	//count flashes and set flashed octopodes to 0
+	count := 0
+	for y := range flashed {
+		for x := range flashed[y] {
+			if flashed[y][x] {
+				count++
+				input[y][x] = 0
+			}
+		}
+	}
 
-	return flashes, grid
+	return count
 }
 
-func findNeighbours(y, x int, input [][]Octopus) []Coord {
-	out := []Coord{}
+func findNeighbours(input [][]int, y, x int) (out [][2]int) {
+	out = [][2]int{}
+
 	for i := y - 1; i <= y+1; i++ {
 		for j := x - 1; j <= x+1; j++ {
 			if i == y && j == x {
@@ -79,40 +98,39 @@ func findNeighbours(y, x int, input [][]Octopus) []Coord {
 			if i < 0 || j < 0 {
 				continue
 			}
-			if i > len(input)-1 || j > len(input[i])-1 {
+			if i > len(input)-1 || j > len(input[0])-1 {
 				continue
 			}
-			out = append(out, Coord{i, j})
+			out = append(out, [2]int{i, j})
 		}
 	}
 	return out
 }
 
-func incrementAll(input [][]Octopus) [][]Octopus {
-	out := [][]Octopus{}
-	for _, row := range input {
-		OctoRow := []Octopus{}
-		for _, o := range row {
-			OctoRow = append(OctoRow, Octopus{o.value + 1, o.flashed})
-		}
-		out = append(out, OctoRow)
-	}
-	return out
-}
-
-func ParseInput(filePath string) [][]Octopus {
-	out := [][]Octopus{}
+func ParseInput(filePath string) [][]int {
+	out := [][]int{}
 
 	file, _ := os.Open(filePath)
 	scanner := bufio.NewScanner(file)
+	defer file.Close()
 
 	for scanner.Scan() {
-		OctoRow := []Octopus{}
+		row := []int{}
 		for _, strAsNum := range scanner.Text() {
-			OctoRow = append(OctoRow, Octopus{int(strAsNum - '0'), false})
+			row = append(row, int(strAsNum-48))
 		}
-		out = append(out, OctoRow)
+		out = append(out, row)
 	}
 
 	return out
+}
+
+func printGrid(input [][]int) {
+	for y := range input {
+		for _, v := range input[y] {
+			fmt.Printf("%v", v)
+		}
+		fmt.Println()
+	}
+	fmt.Println()
 }
