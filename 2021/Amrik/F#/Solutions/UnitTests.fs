@@ -19,3 +19,9 @@ module UnitTests =
         let actual = PartOne "./Input/Samples/Day01.txt"
         let expected = 7
         Assert.AreEqual(expected,actual)
+    
+    [<Test>]
+    let ``Day 1 Part 2`` () = 
+        let actual = PartTwo "./Input/Samples/Day01.txt"
+        let expected = 5
+        Assert.AreEqual(expected,actual)
