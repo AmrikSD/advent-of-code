@@ -2,12 +2,21 @@
 
 open System.IO
 
-module Lib = 
-    let readLines (path:string) =
-        File.ReadAllLines(path)
-
 module Day_01 =
+
+// https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/sequences
+
     let PartOne (path:string) =
-        let input = File.ReadAllLines(path)
-        input[0]
-        
+        File.ReadAllLines(path)
+            |> Seq.map int
+            |> Seq.pairwise
+            |> Seq.filter (fun (a,b) -> b>a)
+            |> Seq.length
+    
+    let PartTwo (path) =
+        File.ReadAllLines path
+            |> Seq.map int
+            |> Seq.windowed 3
+            |> Seq.pairwise
+            |> Seq.filter (fun (a, b) -> Seq.sum a < Seq.sum b)
+            |> Seq.length
