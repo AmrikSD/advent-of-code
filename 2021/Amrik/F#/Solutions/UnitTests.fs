@@ -4,8 +4,6 @@ open NUnit.Framework
 open Day_01
 
 module UnitTests = 
-    
-
     [<SetUp>]
     let Setup () =
         ()
@@ -16,12 +14,8 @@ module UnitTests =
     
     [<Test>]
     let ``Day 1 Part 1`` () = 
-        let actual = PartOne "./Input/Samples/Day01.txt"
-        let expected = 7
-        Assert.AreEqual(expected,actual)
+        Assert.AreEqual(7, PartOne "./Input/Samples/Day01.txt")
     
     [<Test>]
-    let ``Day 1 Part 2`` () = 
-        let actual = PartTwo "./Input/Samples/Day01.txt"
-        let expected = 5
-        Assert.AreEqual(expected,actual)
+    let ``Day 1 Part 2`` () =
+        Assert.AreEqual(5, PartTwo "./Input/Samples/Day01.txt")
