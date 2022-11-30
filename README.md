@@ -2,6 +2,14 @@
 
 Shared repo for your Advent of Code puzzle solutions
 
+# 2022
+
+| Day | Amrik | Nyk  | Karlis  | Jordan  |
+| --- | ----- | ---- | ------- | ------- |
+|     |       |      |         |         |
+
+# 2021
+
 | Day | Amrik | Nyk  |
 | --- | ----- | ---- |
 | 1   | ⭐⭐  | ⭐⭐ |
