@@ -1,0 +1,40 @@
+install:
+    poetry install
+
+local: install
+    poetry run pre-commit install
+
+update:
+    poetry update
+
+black:
+    poetry run black . --check --diff
+
+black-fix:
+    poetry run black .
+
+flake8:
+    poetry run flake8
+
+isort:
+    poetry run isort . --check --diff
+
+isort-fix:
+    poetry run isort .
+
+lint: black flake8 isort
+
+lint-fix: black-fix isort-fix
+
+test:
+    poetry run pytest \
+    --cov-report term:skip-covered \
+    --cov-report html:coverage \
+    --cov-report xml:coverage/coverage.xml \
+    --junitxml=coverage/junit.xml \
+    --cov-fail-under=95 \
+    --cov-branch \
+    --cov=solutions tests/unit_tests -ra -s
+
+test-vv:
+    poetry run pytest --cov=solutions/ tests/ --cov-report html --cov-fail-under=95 --cov-branch --junitxml=coverage/junit.xml -vv
