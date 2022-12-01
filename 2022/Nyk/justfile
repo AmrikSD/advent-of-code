@@ -28,13 +28,10 @@ lint-fix: black-fix isort-fix
 
 test:
     poetry run pytest \
-    --cov-report term:skip-covered \
-    --cov-report html:coverage \
-    --cov-report xml:coverage/coverage.xml \
-    --junitxml=coverage/junit.xml \
-    --cov-fail-under=95 \
-    --cov-branch \
-    --cov=solutions tests/unit_tests -ra -s
+    --junitxml=coverage/junit.xml tests/ -ra -s
 
 test-vv:
-    poetry run pytest --cov=solutions/ tests/ --cov-report html --cov-fail-under=95 --cov-branch --junitxml=coverage/junit.xml -vv
+    poetry run pytest tests/ -junitxml=coverage/junit.xml -vv
+
+run-day day part:
+    poetry run python -m day0'{{day}}'.part_'{{part}}'
