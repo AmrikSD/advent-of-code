@@ -1,5 +1,6 @@
 stages:
-  - testing
+  - 2021 testing
+  - 2022 testing
 
 .Unit_Tests:
   artifacts:
@@ -9,7 +10,7 @@ stages:
 
 Unit Tests C#:
   image: mcr.microsoft.com/dotnet/sdk:5.0.402-focal-amd64
-  stage: testing
+  stage: 2021 testing
   extends: .Unit_Tests
   script:
     - cd 2021/Nyk
@@ -19,4 +20,8 @@ Unit Tests C#:
       - branches
       - merge_requests
     changes:
-      - "**/Nyk/*.*"
+      - "2021/Nyk/*.cs"
+
+Unit Tests Python:
+  stage: 2022 testing
+  extends: .Unit_Tests
