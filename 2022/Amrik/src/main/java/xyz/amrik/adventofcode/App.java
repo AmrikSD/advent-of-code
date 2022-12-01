@@ -1,13 +1,17 @@
 package xyz.amrik.adventofcode;
 
-/**
- * Hello world!
- *
- */
+import xyz.amrik.adventofcode.Day.*;
+
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        Day[] days = new Day[]{
+            new DayOne("./resources/day01.txt")
+        };
+        System.out.format("%3s%15s%15s%n", "Day", "Part 1", "Part 2");
+        for (int i = 0; i < days.length; i++) {
+            System.out.format("%3s%15s%15s%n", i+1, days[i].answerOne, days[i].answerTwo);
+        }
     }
 }
