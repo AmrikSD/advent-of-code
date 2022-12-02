@@ -1,4 +1,4 @@
-from utils import read_lines
+from utils import run_solver_lines
 
 from .calories import get_calories
 
@@ -8,5 +8,4 @@ def solver(file_iter):
 
 
 if __name__ == "__main__":
-    print(solver(read_lines("day01/input.txt")))
-    # print(solver(next(read_line('input.txt'))))
+    run_solver_lines(solver, "day01/input.txt")
