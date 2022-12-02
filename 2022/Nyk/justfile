@@ -35,3 +35,6 @@ test-vv:
 
 run-day day part:
     poetry run python -m day0'{{day}}'.part_'{{part}}'
+
+gen-day day:
+    poetry run python utils/generate/generate_day.py '{{day}}'
