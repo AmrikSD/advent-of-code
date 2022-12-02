@@ -7,6 +7,7 @@ Shared repo for your Advent of Code puzzle solutions
 | Day | Amrik | Nyk  | Karlis  | Jordan  |
 | --- | ----- | ---- | ------- | ------- |
 |  1  |       |  ⭐⭐  |         |         |
+|  2  |       |  ⭐⭐  |         |         |
 
 # 2021
 
