@@ -34,7 +34,7 @@ unit_tests_C#:
   rules:
     - changes:
         paths:
-          - "2021/Nyk/*.cs"
+          - "2021/Nyk/**/*.cs"
   needs: []
 
 poetry_install_nyk:
@@ -56,5 +56,5 @@ unit_tests_python_nyk:
   rules:
     - changes:
         paths:
-          - "2022/Nyk/*.py"
+          - "2022/Nyk/**/*.py"
   needs: [poetry_install_nyk]
