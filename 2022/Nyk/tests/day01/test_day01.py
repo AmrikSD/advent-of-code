@@ -1,7 +1,7 @@
 from utils.read_file import read_lines
 
-from day01.part_01 import solver as solver_01
-from day01.part_02 import solver as solver_02
+from day01.part_1 import solver as solver_01
+from day01.part_2 import solver as solver_02
 
 
 def test_part_1():
