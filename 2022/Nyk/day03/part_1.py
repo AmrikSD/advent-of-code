@@ -31,5 +31,6 @@ def solver(file_iter: Iterator[str]):
 
     return sum_of_priority
 
+
 if __name__ == "__main__":
     run_solver_lines(solver, "day03/input.txt")
