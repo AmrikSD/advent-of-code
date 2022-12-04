@@ -7,7 +7,8 @@ public class App
     public static void main( String[] args )
     {
         Day[] days = new Day[]{
-            new DayOne("./resources/day01.txt")
+            new DayOne("./resources/day01.txt"),
+            new DayTwo("./resources/day02.txt")
         };
         System.out.format("%3s%15s%15s%n", "Day", "Part 1", "Part 2");
         for (int i = 0; i < days.length; i++) {
