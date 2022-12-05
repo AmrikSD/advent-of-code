@@ -10,6 +10,7 @@ Shared repo for your Advent of Code puzzle solutions
 |  2  |       |  ⭐⭐  |         |         |
 |  3  |       |  ⭐⭐  |         |         |
 |  4  |       |  ⭐⭐  |         |         |
+|  5  |       |  ⭐⭐  |         |         |
 
 # 2021
 
