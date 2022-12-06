@@ -9,8 +9,8 @@ enum Move {
     PAPER, // Draw
     SCISSORS; // Win
 
-    Move losesTo(){
-        switch(this){
+    Move losesTo() {
+        switch (this) {
             case ROCK:
                 return PAPER;
             case PAPER:
@@ -22,7 +22,7 @@ enum Move {
         }
     }
 
-    Move winsAgainst(){
+    Move winsAgainst() {
         return this.losesTo().losesTo();
     }
 
@@ -45,7 +45,7 @@ public class DayTwo extends Day {
             String strMoveOpp = str.split(" ")[0];
             String strMovePlayer = str.split(" ")[1];
 
-            switch(strMoveOpp){
+            switch (strMoveOpp) {
                 case "A":
                     round.opponentMove = Move.ROCK;
                     break;
@@ -59,7 +59,7 @@ public class DayTwo extends Day {
                     break;
             }
             // DO player now
-            switch(strMovePlayer){
+            switch (strMovePlayer) {
                 case "X":
                     round.playerMove = Move.ROCK;
                     break;
@@ -77,7 +77,7 @@ public class DayTwo extends Day {
         return rounds;
     }
 
-    private int scoreForRound(Round round){
+    private int scoreForRound(Round round) {
 
         Move playerMove = round.playerMove;
         Move oppMove = round.opponentMove;
@@ -86,12 +86,12 @@ public class DayTwo extends Day {
 
         int outcomeScore = 0;
 
-        if (playerMove.equals(oppMove)){
+        if (playerMove.equals(oppMove)) {
             outcomeScore = 3;
-        }else{
-            if (playerWon(round)){
+        } else {
+            if (playerWon(round)) {
                 outcomeScore = 6;
-            }else{
+            } else {
                 outcomeScore = 0;
             }
         }
@@ -99,11 +99,9 @@ public class DayTwo extends Day {
         return choiceScore + outcomeScore;
     }
 
-
-
     // We only call this if playerMove and oppMove are different.
     private boolean playerWon(Round round) {
-        switch(round.playerMove){
+        switch (round.playerMove) {
             case ROCK:
                 return round.opponentMove == Move.SCISSORS;
             case PAPER:
@@ -124,6 +122,7 @@ public class DayTwo extends Day {
         List<Round> rounds = roundsList();
         answerOne = rounds.stream().collect(Collectors.summingInt(this::scoreForRound)).toString();
     }
+
     @Override
     public void partTwo() {
         List<Round> rounds = roundsList();
@@ -133,7 +132,7 @@ public class DayTwo extends Day {
             int outcomeScore = round.playerMove.ordinal() * 3;
             int choiceScore = 0;
 
-            switch(round.playerMove){
+            switch (round.playerMove) {
                 case PAPER:
                     choiceScore = round.opponentMove.ordinal() + 1;
                     break;
@@ -152,7 +151,7 @@ public class DayTwo extends Day {
 
         }
         answerTwo = String.valueOf(sum);
-        
+
     }
 
 }
