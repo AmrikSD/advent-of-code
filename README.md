@@ -11,6 +11,7 @@ Shared repo for your Advent of Code puzzle solutions
 |  3  |       |  ⭐⭐  |         |         |
 |  4  |       |  ⭐⭐  |         |         |
 |  5  |       |  ⭐⭐  |         |         |
+|  6  |       |  ⭐⭐  |         |         |
 
 # 2021
 
