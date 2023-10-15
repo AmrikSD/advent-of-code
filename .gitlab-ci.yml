@@ -17,7 +17,6 @@ stages:
       - 2022/Nyk/.venv
     policy: pull
 
-
 .unit_tests:
   artifacts:
     when: always
@@ -29,8 +28,8 @@ unit_tests_C#:
   stage: 2021 testing
   extends: .unit_tests
   script:
-   - cd 2021/Nyk
-   - dotnet test AdventOfTest -p:CollectCoverage=true -p:Threshold=80 --configuration Debug --test-adapter-path:"AdventOfTest/" --logger:"junit;LogFilePath=..\CodeCoverage\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"
+    - cd 2021/Nyk
+    - dotnet test AdventOfTest -p:CollectCoverage=true -p:Threshold=80 --configuration Debug --test-adapter-path:"AdventOfTest/" --logger:"junit;LogFilePath=..\CodeCoverage\{assembly}-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"
   rules:
     - changes:
         paths:
@@ -40,19 +39,23 @@ unit_tests_C#:
 poetry_install_nyk:
   stage: 2022 testing
   extends:
-   - .python_jobs_nyk
+    - .python_jobs_nyk
   script: just install
   cache:
     policy: pull-push
+  rules:
+    - changes:
+        paths:
+          - "2022/Nyk/**/*.py"
   needs: []
 
 unit_tests_python_nyk:
   stage: 2022 testing
   extends:
-   - .unit_tests
-   - .python_jobs_nyk
+    - .unit_tests
+    - .python_jobs_nyk
   script:
-   - just test
+    - just test
   rules:
     - changes:
         paths:
