@@ -1,23 +1,36 @@
-# aoc-2023
+# Advent of Code
 
-To install dependencies:
+Shared repo for your Advent of Code puzzle solutions
 
-```bash
-bun install
-```
+# 2023
 
-To run:
+| Day | Amrik | Nyk  | Binda |
+| --- | ----- | ---- | ----- |
+|  1  |       |      |       |
 
-```bash
-cd 2023/Nyk/src/[Day]
-bun run solution.ts
-```
+# 2022
 
-To test:
+| Day | Amrik | Nyk  | Karlis  | Jordan  |
+| --- | ----- | ---- | ------- | ------- |
+|  1  |       |  ⭐⭐  |         |         |
+|  2  |       |  ⭐⭐  |         |         |
+|  3  |       |  ⭐⭐  |         |         |
+|  4  |       |  ⭐⭐  |         |         |
+|  5  |       |  ⭐⭐  |         |         |
+|  6  |       |  ⭐⭐  |         |         |
+|  7  |       |  ⭐⭐  |         |         |
 
-```bash
-cd 2023/Nyk/src/[Day]
-bun test
-```
+# 2021
 
-This project was created using `bun init` in bun v1.0.6. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+| Day | Amrik | Nyk  |
+| --- | ----- | ---- |
+| 1   | ⭐⭐  | ⭐⭐ |
+| 2   | ⭐⭐  | ⭐⭐ |
+| 3   | ⭐⭐  | ⭐⭐ |
+| 4   | ⭐⭐  | ⭐⭐ |
+| 5   | ⭐⭐  | ⭐⭐ |
+| 6   | ⭐⭐  | ⭐⭐ |
+| 7   | ⭐⭐  | ⭐⭐ |
+| 8   | ⭐⭐  | ⭐⭐ |
+| 9   | ⭐⭐  | ⭐⭐ |
+| 10  | ⭐⭐  | ⭐⭐ |
