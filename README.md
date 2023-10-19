@@ -1,37 +1,23 @@
-# Advent of Code
+# aoc-2023
 
-Shared repo for your Advent of Code puzzle solutions
+To install dependencies:
 
-# 2023
+```bash
+bun install
+```
 
-| Day | Amrik | Nyk  |
-| --- | ----- | ---- |
-|  1  |       |      |
+To run:
 
-# 2022
+```bash
+cd 2023/Nyk/src/[Day]
+bun run solution.ts
+```
 
-| Day | Amrik | Nyk  | Karlis  | Jordan  |
-| --- | ----- | ---- | ------- | ------- |
-|  1  |       |  ⭐⭐  |         |         |
-|  2  |       |  ⭐⭐  |         |         |
-|  3  |       |  ⭐⭐  |         |         |
-|  4  |       |  ⭐⭐  |         |         |
-|  5  |       |  ⭐⭐  |         |         |
-|  6  |       |  ⭐⭐  |         |         |
-|  7  |       |  ⭐⭐  |         |         |
+To test:
 
-# 2021
+```bash
+cd 2023/Nyk/src/[Day]
+bun test
+```
 
-| Day | Amrik | Nyk  |
-| --- | ----- | ---- |
-| 1   | ⭐⭐  | ⭐⭐ |
-| 2   | ⭐⭐  | ⭐⭐ |
-| 3   | ⭐⭐  | ⭐⭐ |
-| 4   | ⭐⭐  | ⭐⭐ |
-| 5   | ⭐⭐  | ⭐⭐ |
-| 6   | ⭐⭐  | ⭐⭐ |
-| 7   | ⭐⭐  | ⭐⭐ |
-| 8   | ⭐⭐  | ⭐⭐ |
-| 9   | ⭐⭐  | ⭐⭐ |
-| 10  | ⭐⭐  | ⭐⭐ |
-| 11  | ⭐⭐  | ⭐⭐ |
+This project was created using `bun init` in bun v1.0.6. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.

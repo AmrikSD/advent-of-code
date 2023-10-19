@@ -1,4 +1,4 @@
-import { SolverFunction, FileReaders } from "../types";
+import { SolverFunction, FileReaders } from "./types";
 import { readLines } from "./readFile";
 
 const benchmarkSolver = (solver: SolverFunction, filePath: string, fileReader: FileReaders = readLines) => {

@@ -1,4 +1,4 @@
-import { readFile, readLines } from "./utils/readFile";
+import { readFile, readLines } from "./readFile";
 
 type FileReaders = typeof readFile | typeof readLines;
 
