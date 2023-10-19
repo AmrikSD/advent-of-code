@@ -1,16 +1,22 @@
-import { SolverFunction, FileReaders } from "../../utils/types"
-import { readFile } from "../../utils/readFile"
-import { benchmarkSolver } from "../../utils/runner";
+import { SolverFunction, FileReaders, DaySolution } from "../../types"
 
-import { resolve } from "path";
-
-const solver: SolverFunction = async (fileReader: FileReaders, filePath: string) => {
+const part1: SolverFunction = async (fileReader: FileReaders, filePath: string) => {
     let value = Number(await fileReader(filePath))
     return value;
 };
 
-const inputPath = resolve(...["Day01", "input.txt"])
+const part2: SolverFunction = async (fileReader: FileReaders, filePath: string) => {
+    let value = Number(await fileReader(filePath))
+    return value;
+};
 
-benchmarkSolver(solver, inputPath, readFile)
+const path: string = "src/Day01/Nyk/input.txt"
 
-export { solver }
+const daySolution: DaySolution = {
+    part1,
+    part2,
+    path
+
+}
+
+export { daySolution, }
