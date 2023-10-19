@@ -21,6 +21,7 @@
     "node": ">=18"
   },
   "scripts": {
-    "lint": "eslint --ext .ts"
+    "lint": "eslint --ext .ts",
+    "solution": "run(){ bun run src/$1/index.ts }; run"
   }
 }

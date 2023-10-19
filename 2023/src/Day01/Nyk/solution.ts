@@ -12,11 +12,10 @@ const part2: SolverFunction = async (fileReader: FileReaders, filePath: string) 
 
 const path: string = "src/Day01/Nyk/input.txt"
 
-const daySolution: DaySolution = {
+const results: DaySolution = {
     part1,
     part2,
     path
-
 }
 
-export { daySolution, }
+export { results, }

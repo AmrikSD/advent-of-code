@@ -1,11 +1,10 @@
 import { benchmarkSolver } from "utils/runner";
-import { daySolution as Nyk } from "./Nyk/solution";
+import { results as Nyk } from "./Nyk/solution";
 import { DaySolution, Participants } from "types";
 import { readFile } from "utils/readFile";
 
 const results: Participants = {
     Nyk,
-    Amrik: Nyk
 }
 
 for (let [participant, resultSet] of Object.entries<DaySolution>(results)) {
