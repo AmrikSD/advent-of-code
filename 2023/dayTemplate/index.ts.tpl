@@ -1,16 +1,14 @@
-import { results as Amrik } from './Amrik/solution'
-import { results as Binda } from './Binda/solution'
-import { results as Nyk } from "./Nyk/solution";
+{{#participants}}
+import { results as {{ name }} } from './{{name}}/solution'
+{{/participants}}
 
 import { benchmarkSolver } from "utils/runner";
 import { DaySolution, Participants } from "types";
 
-import { readFile } from "utils/readFile";
-
 const results: Participants = {
-    Amrik,
-    Binda,
-    Nyk,
+    {{#participants}}
+        {{ name }},
+    {{/participants}}
 }
 
 export const runSolutions = async (day: string) => {
