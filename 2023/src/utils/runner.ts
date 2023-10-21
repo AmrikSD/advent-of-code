@@ -1,10 +1,9 @@
-import { SolverFunction, FileReaders } from "../types";
-import { readLines } from "./readFile";
+import { SolverFunction } from "../types";
 
-const benchmarkSolver = async (solver: SolverFunction, filePath: string, fileReader: FileReaders = readLines) => {
+const benchmarkSolver = async (solver: SolverFunction, filePath: string,) => {
     let startTime = performance.now();
 
-    const result = await solver(fileReader, filePath);
+    const result = await solver(filePath);
     let endTime = performance.now();
 
     return { result, timeTaken: `${endTime - startTime} ms` };

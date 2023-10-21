@@ -6,18 +6,43 @@ To install dependencies:
 bun install
 ```
 
+To generate:
+
+```bash
+cd 2023
+bun run generate [Day]
+```
+
+Example:
+
+```bash
+cd 2023
+bun run generate 1
+bun run generate 8
+bun run generate 15
+```
+
 To run:
 
 ```bash
-cd 2023/Nyk/src/[Day]
-bun run solution.ts
+cd 2023
+bun run day [Day]
+```
+
+Example:
+
+```bash
+cd 2023
+bun run day 1
+bun run day 8
+bun run day 15
 ```
 
 To test:
 
 ```bash
-cd 2023/Nyk/src/[Day]
-bun test
+cd 2023
+bun run test
 ```
 
 This project was created using `bun init` in bun v1.0.6. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.

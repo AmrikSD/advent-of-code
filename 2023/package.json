@@ -21,6 +21,8 @@
   },
   "scripts": {
     "lint": "eslint --ext .ts",
-    "solution": "run(){ bun run src/$1/index.ts }; run"
+    "generate": "bun run src/utils/generateDay.ts",
+    "day": "bun run src/utils/runSolutions.ts",
+    "test": "bun test src/"
   }
 }
