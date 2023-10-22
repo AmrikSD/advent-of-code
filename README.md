@@ -4,9 +4,9 @@ Shared repo for your Advent of Code puzzle solutions
 
 # 2023
 
-| Day | Amrik | Nyk  |
-| --- | ----- | ---- |
-|  1  |       |      |
+| Day | Amrik | Nyk  | Binda |
+| --- | ----- | ---- | ----- |
+|  1  |       |      |       |
 
 # 2022
 
