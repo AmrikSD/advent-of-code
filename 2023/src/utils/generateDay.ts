@@ -3,8 +3,8 @@ import fs from "fs"
 import mustache from "mustache"
 
 const participants = [
-    { name: "Amrik"},
-    { name: "Binda"},
+    { name: "Amrik" },
+    { name: "Binda" },
     { name: "Nyk" },
 ]
 
@@ -21,20 +21,25 @@ fs.mkdirSync(`src/${day}`, { recursive: true })
 const templatePath = "dayTemplate/";
 
 const idxTemplate = fs.readFileSync(`${templatePath}/index.ts.tpl`, "utf-8")
-const index = mustache.render(idxTemplate, {participants})
+const index = mustache.render(idxTemplate, { participants })
 
+console.log(`Generating file: src/${day}/index.ts`)
 fs.writeFileSync(`src/${day}/index.ts`, index)
 
 participants.forEach(participant => {
     console.log(`Generating ${day} for ${participant.name}`)
     fs.mkdirSync(`src/${day}/${participant.name}`, { recursive: true })
+    console.log(`Generating file: src/${day}/${participant.name}/input.txt`)
     fs.copyFileSync(`${templatePath}/participant/input.txt`, `src/${day}/${participant.name}/input.txt`)
+
+    console.log(`Generating file: src/${day}/${participant.name}/solution.ts`)
     fs.copyFileSync(`${templatePath}/participant/solution.ts`, `src/${day}/${participant.name}/solution.ts`)
     fs.mkdirSync(`src/${day}/${participant.name}/__tests__`, { recursive: true })
 
     const testTemplate = fs.readFileSync(`${templatePath}participant/__tests__/solution.spec.ts.tpl`, "utf-8")
     const path = `src/${day}/${participant.name}/input.txt`
-    const test = mustache.render(testTemplate, {path: path})
-    console.log(test)
+    const test = mustache.render(testTemplate, { path, day })
+
+    console.log(`Generating file: src/${day}/${participant.name}/__tests__/solution.spec.ts`)
     fs.writeFileSync(`src/${day}/${participant.name}/__tests__/solution.spec.ts`, test)
 })
