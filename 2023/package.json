@@ -3,9 +3,10 @@
   "module": "index.ts",
   "type": "module",
   "devDependencies": {
+    "@types/mustache": "^4.2.4",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
-    "bun-types": "latest",
+    "bun-types": "1.0.6",
     "eslint": "^8.51.0",
     "eslint-config-standard-with-typescript": "^39.1.1",
     "eslint-plugin-import": "^2.28.1",
@@ -20,6 +21,12 @@
     "node": ">=18"
   },
   "scripts": {
-    "lint": "eslint --ext .ts"
+    "lint": "eslint --ext .ts",
+    "generate": "bun run src/utils/generateDay.ts",
+    "day": "bun run src/utils/runSolutions.ts",
+    "test": "bun test src/"
+  },
+  "dependencies": {
+    "mustache": "^4.2.0"
   }
 }
