@@ -20,6 +20,7 @@ stages:
 
 .2023_ts_jobs:
   image: oven/bun:1.0.6-alpine
+  before_script: cd 2023/
   cache:
     key: $CI_COMMIT_BRANCH-ts
     paths:
