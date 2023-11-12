@@ -79,20 +79,19 @@ bun_install_ts:
   script: bun install
   cache:
     policy: pull-push
-  rules:
-    - changes:
-        paths:
-          - "2023"
+  # rules:
+  #   - changes:
+  #       paths:
+  #         - "2023"
   needs: []
 
 bun_test_ts:
   stage: 2023 testing
   extends:
     - .2023_ts_jobs
-  script:
-    - bun test
-  rules:
-    - changes:
-        paths:
-          - "2023/"
+  script: bun test
+  # rules:
+  #   - changes:
+  #       paths:
+  #         - "2023/"
   needs: [bun_install_ts]
