@@ -1,18 +1,14 @@
-{{#participants}}
-import { results as {{ name }} } from './{{name}}/solution'
-{{/participants}}
+import { results as {{ participant }} } from './{{participant}}/solution'
 
 import { benchmarkSolver } from "utils/runner";
 import { DaySolution, Participants } from "types";
 
 const results: Participants = {
-    {{#participants}}
-        {{ name }},
-    {{/participants}}
+    {{participant}}
 }
 
 export const runSolutions = async (day: string) => {
-    for (let [participant, resultSet] of Object.entries<DaySolution>(results)) {
+    for (const [participant, resultSet] of Object.entries<DaySolution>(results)) {
         console.log(participant)
 
         const { part1, part2 } = resultSet

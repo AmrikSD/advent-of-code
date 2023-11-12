@@ -10,7 +10,7 @@ const day = `Day${process.argv[2].padStart(2, "0")}`
 const runSolutionPath = `../${day}/index`
 
 const run = async () => {
-    let { runSolutions } = await import(runSolutionPath);
+    const { runSolutions } = await import(runSolutionPath);
     await runSolutions(day)
 }
 

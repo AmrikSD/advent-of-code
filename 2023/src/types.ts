@@ -1,7 +1,3 @@
-import { readFile, readLines } from "./utils/readFile";
-
-type FileReaders = typeof readFile | typeof readLines;
-
 type SolverResult = Promise<number>;
 type SolverFunction = { (filePath: string): SolverResult };
 
@@ -14,4 +10,4 @@ interface Participants {
     [s: string]: DaySolution,
 }
 
-export { FileReaders, SolverResult, SolverFunction, DaySolution, Participants }
+export { SolverResult, SolverFunction, DaySolution, Participants }

@@ -2,7 +2,7 @@
 const readLines = async function* (filePath: string) {
     const fileLines = (await readFile(filePath)).split("/n");
 
-    for (let line of fileLines) {
+    for (const line of fileLines) {
         yield line;
     }
 }
