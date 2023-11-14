@@ -27,6 +27,10 @@ stages:
       - 2023/bun.lockb
       - 2023/node_modules
     policy: pull
+  rules:
+    - changes:
+        paths:
+          - "2023/**/*.*"
 
 .unit_tests:
   artifacts:
@@ -80,10 +84,6 @@ bun_install_ts:
   script: bun install
   cache:
     policy: pull-push
-  rules:
-    - changes:
-        paths:
-          - "2023"
   needs: []
 
 bun_test_ts:
@@ -91,8 +91,4 @@ bun_test_ts:
   extends:
     - .2023_ts_jobs
   script: bun test
-  rules:
-    - changes:
-        paths:
-          - "2023/"
   needs: [bun_install_ts]
