@@ -1,6 +1,7 @@
 stages:
   - 2021 testing
   - 2022 testing
+  - 2023 testing
 
 .python_jobs_nyk:
   image: python:3.10-alpine
@@ -12,9 +13,19 @@ stages:
     - poetry config virtualenvs.in-project true
     - cd 2022/Nyk
   cache:
-    key: $CI_COMMIT_BRANCH
+    key: $CI_COMMIT_BRANCH-python
     paths:
       - 2022/Nyk/.venv
+    policy: pull
+
+.2023_ts_jobs:
+  image: oven/bun:1.0.6-alpine
+  before_script: cd 2023/
+  cache:
+    key: $CI_COMMIT_BRANCH-ts
+    paths:
+      - 2023/bun.lockb
+      - 2023/node_modules
     policy: pull
 
 .unit_tests:
@@ -61,3 +72,27 @@ unit_tests_python_nyk:
         paths:
           - "2022/Nyk/**/*.py"
   needs: [poetry_install_nyk]
+
+bun_install_ts:
+  stage: 2023 testing
+  extends:
+    - .2023_ts_jobs
+  script: bun install
+  cache:
+    policy: pull-push
+  rules:
+    - changes:
+        paths:
+          - "2023"
+  needs: []
+
+bun_test_ts:
+  stage: 2023 testing
+  extends:
+    - .2023_ts_jobs
+  script: bun test
+  rules:
+    - changes:
+        paths:
+          - "2023/"
+  needs: [bun_install_ts]
