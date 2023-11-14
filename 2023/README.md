@@ -10,16 +10,16 @@ To generate:
 
 ```bash
 cd 2023
-bun run generate [Day]
+bun run generate [Day] [Participant]
 ```
 
 Example:
 
 ```bash
 cd 2023
-bun run generate 1
-bun run generate 8
-bun run generate 15
+bun run generate 1 Greg
+bun run generate 8 Bob
+bun run generate 15 David
 ```
 
 To run:
