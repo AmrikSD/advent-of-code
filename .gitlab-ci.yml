@@ -39,7 +39,7 @@ stages:
       junit: "**/CodeCoverage/*.xml"
 
 unit_tests_C#:
-  image: mcr.microsoft.com/dotnet/sdk:5.0.402-focal-amd64
+  image: mcr.microsoft.com/dotnet/sdk:5.0.408-focal-amd64
   stage: 2021 testing
   extends: .unit_tests
   script:
