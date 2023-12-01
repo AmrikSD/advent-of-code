@@ -90,5 +90,5 @@ bun_test_ts:
   stage: 2023 testing
   extends:
     - .2023_ts_jobs
-  script: bun test
+  script: bun run test
   needs: [bun_install_ts]
