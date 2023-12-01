@@ -3,6 +3,7 @@ import { readLines } from "utils/readFile";
 
 const part1: SolverFunction = async (filePath: string) => {
     let result = 0;
+
     for await (const line of readLines(filePath)) {
         let lineResult = "";
 
