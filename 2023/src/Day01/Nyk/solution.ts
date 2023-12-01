@@ -121,6 +121,7 @@ const getNumValue = (line: string): number => {
 
 const part2: SolverFunction = async (filePath: string) => {
     let result = 0;
+
     for await (const line of readLines(filePath)) {
         result += getNumValue(line);
     }
