@@ -29,7 +29,7 @@ const part1: SolverFunction = async (filePath: string) => {
 
 const getMinMaxOccurrence = (digit: string, line: string): [number, number] => {
     let endOfLine = false;
-    let occurences: number[] = [];
+    const occurences: number[] = [];
     let nextIndex = -1;
 
     while (!endOfLine) {
@@ -68,7 +68,7 @@ const convertToStringLiteral = (value: string): string => {
 };
 
 const getNumValue = (line: string): number => {
-    let valuesToFind: string[] = [
+    const valuesToFind: string[] = [
         "one",
         "two",
         "three",

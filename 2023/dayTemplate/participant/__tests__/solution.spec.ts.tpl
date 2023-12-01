@@ -7,6 +7,6 @@ describe("{{day}}", () => {
     })
 
     test("part2", async () => {
-        expect(await results.part1("{{{path2}}}")).toBe(2);
+        expect(await results.part2("{{{path2}}}")).toBe(2);
     })
 })
