@@ -30,11 +30,19 @@ fs.copyFileSync(`${templatePath}/participant/input.txt`, `src/${day}/${participa
 
 console.log(`Generating file: src/${day}/${participant}/solution.ts`)
 fs.copyFileSync(`${templatePath}/participant/solution.ts`, `src/${day}/${participant}/solution.ts`)
+
+
 fs.mkdirSync(`src/${day}/${participant}/__tests__`, { recursive: true })
+console.log(`Generating file: src/${day}/${participant}/__tests__/input.txt`)
+fs.copyFileSync(`${templatePath}/participant/__tests__/input.txt`, `src/${day}/${participant}/__tests__/input.txt`)
+console.log(`Generating file: src/${day}/${participant}/__tests__/input2.txt`)
+fs.copyFileSync(`${templatePath}/participant/__tests__/input.txt`, `src/${day}/${participant}/__tests__/input2.txt`)
 
 const testTemplate = fs.readFileSync(`${templatePath}participant/__tests__/solution.spec.ts.tpl`, "utf-8")
-const path = `src/${day}/${participant}/input.txt`
-const test = mustache.render(testTemplate, { path, day })
+const path = `src/${day}/${participant}/__tests__/input.txt`
+const path2 = `src/${day}/${participant}/__tests__/input2.txt`
+
+const test = mustache.render(testTemplate, { path, path2, day })
 
 console.log(`Generating file: src/${day}/${participant}/__tests__/solution.spec.ts`)
 fs.writeFileSync(`src/${day}/${participant}/__tests__/solution.spec.ts`, test)
