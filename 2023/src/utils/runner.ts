@@ -6,7 +6,7 @@ const benchmarkSolver = async (solver: SolverFunction, filePath: string,) => {
     const result = await solver(filePath);
     const endTime = performance.now();
 
-    return { result, timeTaken: `${endTime - startTime} ms` };
-}
+    return { result, timeTaken: `${(endTime - startTime).toFixed(2)} ms` };
+};
 
-export { benchmarkSolver }
+export { benchmarkSolver };
