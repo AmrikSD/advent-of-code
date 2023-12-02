@@ -7,6 +7,6 @@ describe("Day02", () => {
     });
 
     test("part2", async () => {
-        expect(await results.part2("src/Day02/Nyk/__tests__/input2.txt")).toBe(2);
+        expect(await results.part2("src/Day02/Nyk/__tests__/input.txt")).toBe(2286);
     });
 });
