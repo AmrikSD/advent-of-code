@@ -1,6 +1,6 @@
 //This sucks, stupid JS.
 const readLines = async function* (filePath: string) {
-    const fileLines = (await readFile(filePath)).split("/n");
+    const fileLines = (await readFile(filePath)).split("\n")
 
     for (const line of fileLines) {
         yield line;
