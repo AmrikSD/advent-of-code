@@ -7,7 +7,7 @@ Shared repo for your Advent of Code puzzle solutions
 | Day | Amrik | Nyk  | Binda |
 | --- | ----- | ---- | ----- |
 |  1  |  ⭐⭐  |  ⭐⭐  |       |
-|  2  |       |  ⭐⭐  |       |
+|  2  |  ⭐⭐  |  ⭐⭐  |       |
 
 
 # 2022

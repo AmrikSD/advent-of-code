@@ -1,23 +1,25 @@
-import { results as Nyk } from './Nyk/solution'
+import { results as Nyk } from './Nyk/solution';
+import { results as Amrik } from './Amrik/solution';
 
 import { benchmarkSolver } from "utils/runner";
 import { DaySolution, Participants } from "types";
 
 const results: Participants = {
-    Nyk
-}
+    Nyk,
+    Amrik
+};
 
 export const runSolutions = async (day: string) => {
     for (const [participant, resultSet] of Object.entries<DaySolution>(results)) {
-        console.log(participant)
+        console.log(participant);
 
-        const { part1, part2 } = resultSet
+        const { part1, part2 } = resultSet;
 
-        const inputPath = `src/${day}/${participant}/input.txt`
+        const inputPath = `src/${day}/${participant}/input.txt`;
 
-        console.log("Part 1: ", await benchmarkSolver(part1, inputPath))
-        console.log("Part 2: ", await benchmarkSolver(part2, inputPath))
+        console.log("Part 1: ", await benchmarkSolver(part1, inputPath));
+        console.log("Part 2: ", await benchmarkSolver(part2, inputPath));
 
-        console.log("") //newline
+        console.log(""); //newline
     }
-}
+};

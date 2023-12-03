@@ -14,16 +14,21 @@ const tokens = [
     "9", "nine",
 ]
 
+const token_to_number = new Map<string,number>([
+    ["one", 1],
+    ["two", 2],
+    ["three", 3],
+    ["four", 4],
+    ["five", 5],
+    ["six", 6],
+    ["seven", 7],
+    ["eight", 8],
+    ["nine", 9],
+])
 const sanitize = (numberOrString: string): number => {
-    if (numberOrString == "one"){return 1}
-    if (numberOrString == "two"){return 2}
-    if (numberOrString == "three"){return 3}
-    if (numberOrString == "four"){return 4}
-    if (numberOrString == "five"){return 5}
-    if (numberOrString == "six"){return 6}
-    if (numberOrString == "seven"){return 7}
-    if (numberOrString == "eight"){return 8}
-    if (numberOrString == "nine"){return 9}
+    if(token_to_number.has(numberOrString)) {
+        return token_to_number.get(numberOrString) ?? 0
+    }
     return Number.parseInt(numberOrString)
 }
 
