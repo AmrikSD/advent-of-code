@@ -29,7 +29,6 @@ const part2: SolverFunction = async (filePath: string) => {
         .split("\n")
         .map(line => ({ line, instances: 1 }))
         .reduce<number>((result, value, index, lines) => {
-
             const [winning, players] = splitNumberStrings(value.line);
 
             const matchingNumbers = players.reduce<number>((result, value) => winning.includes(value) ? result + 1 : result, 0);
@@ -37,8 +36,6 @@ const part2: SolverFunction = async (filePath: string) => {
 
                 lines[lineIndex].instances += value.instances;
             }
-
-            console.log("result: ", result);
 
             return result + value.instances;;
         }, 0);
