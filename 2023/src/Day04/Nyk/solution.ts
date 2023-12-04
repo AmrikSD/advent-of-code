@@ -33,7 +33,6 @@ const part2: SolverFunction = async (filePath: string) => {
 
             const matchingNumbers = players.reduce<number>((result, value) => winning.includes(value) ? result + 1 : result, 0);
             for (let lineIndex = index + 1; lineIndex < index + matchingNumbers + 1; lineIndex++) {
-
                 lines[lineIndex].instances += value.instances;
             }
 
