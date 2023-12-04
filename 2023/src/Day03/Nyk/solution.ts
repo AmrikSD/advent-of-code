@@ -3,11 +3,9 @@ import { readLines } from "utils/readFile";
 
 const clamp = (num: number, min: number, max: number) => Math.min(Math.max(num, min), max);
 
-const getAdjacentIndexes = (currentNumberBuilder: NumberBuilder, lineIndex: number, schematicLength: number, lineLength: number) => {
-    const numberIndexes = numberBuilderValues(currentNumberBuilder);
-
-    const minHorizontalIndex = clamp(numberIndexes.reduce<number>((result, value) => Math.min(result, value), Number.MAX_SAFE_INTEGER) - 1, 0, lineLength);
-    const maxHorizontalIndex = clamp(numberIndexes.reduce<number>((result, value) => Math.max(result, value), Number.MIN_SAFE_INTEGER) + 1, 0, lineLength);
+const getAdjacentIndexes = (numIndexes: number[], lineIndex: number, schematicLength: number, lineLength: number) => {
+    const minHorizontalIndex = clamp(numIndexes.reduce<number>((result, value) => Math.min(result, value), Number.MAX_SAFE_INTEGER) - 1, 0, lineLength);
+    const maxHorizontalIndex = clamp(numIndexes.reduce<number>((result, value) => Math.max(result, value), Number.MIN_SAFE_INTEGER) + 1, 0, lineLength);
 
     const minVerticalIndex = clamp(lineIndex - 1, 0, schematicLength);
     const maxVerticalIndex = clamp(lineIndex + 1, 0, schematicLength);
@@ -22,10 +20,6 @@ const getAdjacentIndexes = (currentNumberBuilder: NumberBuilder, lineIndex: numb
     return indexes;
 };
 
-type NumberBuilder = (string | number)[][];
-const numberBuilderKeys = (arr: NumberBuilder): string[] => arr.reduce<string[]>((result, value) => { result.push(value[0] as string); return result; }, []);
-const numberBuilderValues = (arr: NumberBuilder): number[] => arr.reduce<number[]>((result, value) => { result.push(value[1] as number); return result; }, []);
-
 const isValidNumber = (indexesToCheck: number[][], schematic: string[][]): boolean => {
     const notANumber = (value: string): boolean => isNaN(parseInt(value));
     const notADot = (value: string): boolean => value !== ".";
@@ -37,53 +31,29 @@ const isValidNumber = (indexesToCheck: number[][], schematic: string[][]): boole
 
 const part1: SolverFunction = async (filePath: string) => {
     const schematic: string[][] = [];
-    let totalNumbers = 0;
     for await (const line of readLines(filePath)) {
         schematic.push(line.split(""));
     }
 
+    const re = /[0-9]{1,3}/g;
     let result = 0;
+
     for (let lineIndex = 0; lineIndex < schematic.length; lineIndex++) {
-        let currentNumberBuilder: NumberBuilder = [];
-
         const line = schematic[lineIndex].join("");
-        console.log("line: ", line);
-
-        const re = /[0-9]{1,3}/g;
 
         let reResult;
         while ((reResult = re.exec(line)) !== null) {
-            console.log("index: ", reResult.index);
-            //get the value and index. Do math to work out last index, continue the code below
-            totalNumbers += 1;
-        }
+            const indexes = [reResult.index, reResult.index + reResult[0].length - 1];
+            const indexesToCheck = getAdjacentIndexes(indexes, lineIndex, schematic.length - 1, schematic[lineIndex].length - 1);
 
-
-        for (let charIndex = 0; charIndex < schematic[lineIndex].length; charIndex++) {
-            const char = schematic[lineIndex][charIndex];
-
-            if (!isNaN(parseInt(char))) //Is a number
-            {
-                currentNumberBuilder.push([char, charIndex]);
-                continue;
-            }
-
-            const keys = numberBuilderKeys(currentNumberBuilder);
-            if (keys.length !== 0 && isNaN(parseInt(char))) {
-
-                const indexesToCheck = getAdjacentIndexes(currentNumberBuilder, lineIndex, schematic.length - 1, schematic[lineIndex].length - 1);
-
-                if (isValidNumber(indexesToCheck, schematic)) {
-                    const value = parseInt(keys.join(""));
-                    result += value;
-                }
-
-                currentNumberBuilder = [];
+            if (isValidNumber(indexesToCheck, schematic)) {
+                const value = parseInt(reResult[0]);
+                result += value;
             }
         }
+
     };
 
-    console.log("Total Numbers: ", totalNumbers);
     return result;
 };
 
