@@ -8,6 +8,8 @@ Shared repo for your Advent of Code puzzle solutions
 | --- | ----- | ---- | ----- |
 |  1  |  ⭐⭐  |  ⭐⭐  |       |
 |  2  |  ⭐⭐  |  ⭐⭐  |       |
+|  2  |         |         |       |
+|  4  |         |  ⭐⭐  |       |
 
 
 # 2022
