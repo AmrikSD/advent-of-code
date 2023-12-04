@@ -37,6 +37,7 @@ const isValidNumber = (indexesToCheck: number[][], schematic: string[][]): boole
 
 const part1: SolverFunction = async (filePath: string) => {
     const schematic: string[][] = [];
+    let totalNumbers = 0;
     for await (const line of readLines(filePath)) {
         schematic.push(line.split(""));
     }
@@ -44,6 +45,18 @@ const part1: SolverFunction = async (filePath: string) => {
     let result = 0;
     for (let lineIndex = 0; lineIndex < schematic.length; lineIndex++) {
         let currentNumberBuilder: NumberBuilder = [];
+
+        const line = schematic[lineIndex].join("");
+        console.log("line: ", line);
+
+        const re = /[0-9]{1,3}/g;
+
+        let reResult;
+        while ((reResult = re.exec(line)) !== null) {
+            console.log("index: ", reResult.index);
+            //get the value and index. Do math to work out last index, continue the code below
+            totalNumbers += 1;
+        }
 
 
         for (let charIndex = 0; charIndex < schematic[lineIndex].length; charIndex++) {
@@ -57,21 +70,20 @@ const part1: SolverFunction = async (filePath: string) => {
 
             const keys = numberBuilderKeys(currentNumberBuilder);
             if (keys.length !== 0 && isNaN(parseInt(char))) {
+
                 const indexesToCheck = getAdjacentIndexes(currentNumberBuilder, lineIndex, schematic.length - 1, schematic[lineIndex].length - 1);
 
                 if (isValidNumber(indexesToCheck, schematic)) {
                     const value = parseInt(keys.join(""));
-                    if (value == 755) {
-                        console.log("Adding ", value);
-                    }
                     result += value;
                 }
 
                 currentNumberBuilder = [];
             }
         }
-    }
+    };
 
+    console.log("Total Numbers: ", totalNumbers);
     return result;
 };
 
