@@ -4,7 +4,7 @@ stages:
   - 2023 testing
 
 .python_jobs_nyk:
-  image: python:3.10-alpine
+  image: python:3.12-alpine
   before_script:
     - apk --no-cache add curl
     - apk add just
