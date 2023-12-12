@@ -19,7 +19,7 @@ stages:
     policy: pull
 
 .2023_ts_jobs:
-  image: oven/bun:1.0.6-alpine
+  image: oven/bun:1.0.17-alpine
   before_script: cd 2023/
   cache:
     key: $CI_COMMIT_BRANCH-ts
