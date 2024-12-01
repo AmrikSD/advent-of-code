@@ -1,4 +1,4 @@
-package amrik
+package utils
 
 import (
 	"bufio"
