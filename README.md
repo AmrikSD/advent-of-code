@@ -2,6 +2,13 @@
 
 Shared repo for your Advent of Code puzzle solutions
 
+# 2024
+
+| Day |  Amrik  |  Nyk   |
+| --- |  -----  |  ----  |
+|  1  |  ⭐⭐   |  ⭐⭐  |
+
+
 # 2023
 
 | Day | Amrik | Nyk  | Binda |
