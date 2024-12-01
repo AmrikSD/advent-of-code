@@ -5,11 +5,12 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+    "2024/utils"
 )
 
 func Day01Part01(path string) int {
 
-	strs, err := Strings(path)
+	strs, err := utils.Strings(path)
 	if err != nil {
 		panic(err.Error)
 	}
@@ -53,7 +54,7 @@ func Day01Part01(path string) int {
 
 func Day01Part02(path string) int {
 
-	strs, err := Strings(path)
+	strs, err := utils.Strings(path)
 	if err != nil {
 		panic(err.Error)
 	}
