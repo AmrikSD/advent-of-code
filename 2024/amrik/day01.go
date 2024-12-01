@@ -1,11 +1,11 @@
 package amrik
 
 import (
+	"2024/utils"
 	"fmt"
 	"slices"
 	"strconv"
 	"strings"
-    "2024/utils"
 )
 
 func Day01Part01(path string) int {
