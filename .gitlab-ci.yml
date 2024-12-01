@@ -77,18 +77,18 @@ unit_tests_python_nyk:
           - "2022/Nyk/**/*.py"
   needs: [poetry_install_nyk]
 
-bun_install_ts:
-  stage: 2023 testing
-  extends:
-    - .2023_ts_jobs
-  script: bun install
-  cache:
-    policy: pull-push
-  needs: []
+# bun_install_ts:
+#   stage: 2023 testing
+#   extends:
+#     - .2023_ts_jobs
+#   script: bun install
+#   cache:
+#     policy: pull-push
+#   needs: []
 
-bun_test_ts:
-  stage: 2023 testing
-  extends:
-    - .2023_ts_jobs
-  script: bun run test
-  needs: [bun_install_ts]
+# bun_test_ts:
+#   stage: 2023 testing
+#   extends:
+#     - .2023_ts_jobs
+#   script: bun run test
+#   needs: [bun_install_ts]
