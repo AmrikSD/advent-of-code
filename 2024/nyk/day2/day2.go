@@ -89,6 +89,7 @@ func Part1(path string) int {
 func remove_at_index(s []int, index int) []int {
 	ret := make([]int, 0, len(s)-1)
 	ret = append(ret, s[:index]...)
+
 	return append(ret, s[index+1:]...)
 }
 
