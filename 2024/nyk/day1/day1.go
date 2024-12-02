@@ -1,4 +1,4 @@
-package nyk
+package day1
 
 import (
 	"2024/utils"
