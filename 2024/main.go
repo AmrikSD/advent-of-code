@@ -2,7 +2,7 @@ package main
 
 import (
 	amrik "2024/amrik"
-	nyk "2024/nyk/day1"
+	nyk "2024/nyk"
 	"fmt"
 )
 
@@ -14,6 +14,9 @@ func main() {
 	fmt.Printf("\tDay 2 Part 2: %d\n", amrik.Day02Part02("./amrik/inputs/day02/input.txt"))
 
 	fmt.Println("Nyk:")
-	fmt.Printf("\tDay 1 Part 1: %d\n", nyk.Part1("./nyk/day1/input.txt"))
-	fmt.Printf("\tDay 1 Part 2: %d\n", nyk.Part2("./nyk/day1/input.txt"))
+	for day, solution := range nyk.Days {
+		fmt.Printf("\tDay %d Part 1: %d\n", day+1, solution.Part1(solution.Input_path))
+		fmt.Printf("\tDay %d Part 2: %d\n", day+1, solution.Part2(solution.Input_path))
+	}
+
 }
