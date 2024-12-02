@@ -23,3 +23,15 @@ func BenchmarkNykDay1Part2(b *testing.B) {
 }
 
 // Day 2 Part 1
+func BenchmarkAmrikDay2Part1(b *testing.B) {
+	amrik.Day02Part01("./amrik/inputs/day02/input.txt")
+}
+func BenchmarkNykDay2Part1(b *testing.B) {
+}
+
+// Day 2 Part 2
+func BenchmarkAmrikDay2Part2(b *testing.B) {
+	amrik.Day02Part02("./amrik/inputs/day02/input.txt")
+}
+func BenchmarkNykDay2Part2(b *testing.B) {
+}
