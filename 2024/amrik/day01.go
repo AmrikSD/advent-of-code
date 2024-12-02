@@ -3,7 +3,7 @@ package amrik
 import (
 	"2024/utils"
 	"fmt"
-	"slices"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -33,18 +33,18 @@ func Day01Part01(path string) int {
 		rightArr = append(rightArr, right)
 	}
 
-	slices.Sort(leftArr)
-	slices.Sort(rightArr)
+	sort.Ints(leftArr)
+	sort.Ints(rightArr)
 
 	if len(leftArr) != len(rightArr) {
 		panic("left array not equal to right")
 	}
 
 	sum := 0
-	for i, _ := range leftArr {
+	for i := range leftArr {
 		diff := leftArr[i] - rightArr[i]
 		if diff < 0 {
-			diff = diff * -1
+			diff = -diff
 		}
 		sum += diff
 	}
